@@ -1,0 +1,85 @@
+.footerContent {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  background-image: linear-gradient(135deg, #f97794 10%, #623aa2 100%);
+
+}
+
+.footerContent:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.glassIconContainer {
+  --width: 100px;
+  width: var(--width);
+  height: var(--width);
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  overflow: hidden;
+  display: flex;
+}
+
+.glassIconContainer,
+.glassIconContainer * {
+  box-sizing: border-box;
+  transition: 200ms;
+}
+
+.glassIconContainer:before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(0px);
+  transition: 400ms;
+  transform: skewX(45deg) translateX(calc(var(--width) + 100%));
+}
+
+.glassIconContainer:hover {
+  transform: translateY(-20px);
+}
+
+.glassIconContainer:hover:before {
+  transform: skewX(45deg) translateX(calc(var(--width) * -1 - 50%));
+}
+
+.glassIconContainer {
+  opacity: 0.8;
+}
+
+.gitHub,
+.linkedIn {
+  font-size: 3rem;
+  align-self: center;
+  color: white;
+}
