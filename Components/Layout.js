@@ -12,6 +12,7 @@ const Layout = ({ children }) => {
       <div className={styles.footerWrapper}>
         <Footer />
       </div>
+      <div className={styles.blob}></div>
     </div>
   )
 }
