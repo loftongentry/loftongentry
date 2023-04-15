@@ -19,4 +19,3 @@ const Footer = () => {
 }
 
 export default Footer
-//This is a comment
