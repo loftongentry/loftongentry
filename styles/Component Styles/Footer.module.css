@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   height: 10rem;
-  background-image: linear-gradient(135deg, #003594 10%, #869397 100%);
 }
 
 .iconContainer {
@@ -16,7 +15,7 @@
 }
 
 .glassIconContainer {
-  --width: 100px;
+  --width: 80px;
   width: var(--width);
   height: var(--width);
   color: #fff;
