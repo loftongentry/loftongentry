@@ -1,5 +1,5 @@
 
-import GlassCard from '@/Components/GlassCard'
+import GlassCard from '@/Components/Page Components/GlassCard'
 import styles from '../styles/Index.module.css'
 
 
