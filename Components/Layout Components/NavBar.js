@@ -1,13 +1,13 @@
-import Link from 'next/link'
 import styles from '../../styles/Component Styles/NavBar.module.css'
+import NavBarLink from './NavBarLink'
 
 const NavBar = () => {
   return (
     <nav className={styles.FirstNav}>
-      <Link href='/' className={styles.home}>Lofton Gentry</Link>
+      <NavBarLink link='/' linkContent='Lofton Gentry'></NavBarLink>
       <div className={styles.secondNavBar}>
-        <Link href='/fruityShooty' className={styles.fruityShooty}>Fruity Shooty</Link>
-        <Link href='/runs' className={styles.runs}>My Runs</Link>
+        <NavBarLink link='/fruityShooty' linkContent='Fruity Shooty'>Fruity Shooty</NavBarLink>
+        <NavBarLink link='/runs' linkContent='My Runs'></NavBarLink>
       </div>
     </nav>
   )
