@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from '../styles/Component Styles/GlassCard.module.css'
+import styles from '../../styles/Component Styles/GlassCard.module.css'
 
 const GlassCard = (props) => {
   return (
