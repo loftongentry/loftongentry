@@ -1,6 +1,5 @@
-
 import GlassCard from '@/Components/Page Components/GlassCard'
-import styles from '../styles/Index.module.css'
+import styles from '../styles/Page Styles/Index.module.css'
 
 
 export default function Home() {
