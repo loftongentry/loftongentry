@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem 0 1rem;
-  box-shadow: inset 0px 0px 277px 3px #20292f; 
   backdrop-filter: blur(10px); 
 }
 
@@ -21,14 +20,6 @@
 .home, .fruityShooty, .runs{
   color: aliceblue;
   text-decoration: none;
-}
-
-.fruityShooty, .runs{
-  font-size: 100%;
-  font-weight: 400;
-  transition: font-size 0.2s ease-in-out;
-}
-
-.fruityShooty:hover, .runs:hover{
-  font-size: 105%;
+  border: 1px solid red;
+  padding: 10px;
 }
