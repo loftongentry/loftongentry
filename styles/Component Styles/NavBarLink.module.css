@@ -1,0 +1,22 @@
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  transition: 400ms;
+}
+
+.card:hover{
+  transform: translateY(20px);
+}
+
+.link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
