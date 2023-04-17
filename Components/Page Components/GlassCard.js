@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FiGithub } from 'react-icons/fi'
 import styles from '../../styles/Component Styles/GlassCard.module.css'
 
 const GlassCard = (props) => {
@@ -8,7 +9,16 @@ const GlassCard = (props) => {
       <div className={styles.content}>
         <h2 className={styles.cardHeader}>{props.cardHeader}</h2>
         <p className={styles.cardContent}>{props.cardContent}</p>
-        <Link className={styles.cardLink} href={props.cardLink}>{props.cardLinkTitle}</Link>
+        <div className={styles.cardFooter}>
+          {props.buttonTo && (
+            <button className={styles.cardLink} onClick={
+              () => { window.open(`${props.cardLink}`, '_blank') }
+            }>{props.cardLinkTitle}</button>
+          )}
+          <Link href={props.gitHubLink}>
+            <FiGithub className={styles.iconLink} />
+          </Link>
+        </div>
       </div>
     </div>
   )

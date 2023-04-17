@@ -5,13 +5,16 @@ import styles from '../styles/Page Styles/Index.module.css'
 export default function Home() {
   return (
     <div className={styles.content}>
-      <h1>Welcome!</h1>
+      <h1 className={styles.header}>Welcome!</h1>
       <div className={styles.cards}>
         <GlassCard
-          cardHeader='Card 1'
-          cardContent='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-          cardLink='Link Here'
-          cardLinkTitle='Click Here'
+          cardHeader={`Gentry's Auto Detailing`}
+          cardContent='This was a website I designed for a relative for their auto
+          detailing business. This site was made using React'
+          cardLink='https://gentry-auto-detailing.vercel.app/'
+          cardLinkTitle='View Site'
+          buttonTo={true}
+          gitHubLink='https://github.com/loftongentry/gentry-auto-detailing'
         ></GlassCard>
       </div>
     </div>
