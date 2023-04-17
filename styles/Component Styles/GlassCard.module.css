@@ -152,6 +152,13 @@
   line-height: 1.4em;
 }
 
+.cardFooter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
 .cardLink{
   display: inline-block;
   font-size: 1.1em;
@@ -161,10 +168,19 @@
   border-radius: 4px;
   text-decoration: none;
   font-weight: 700;
-  margin-top: 6px;
 }
 
 .cardLink:hover{
   background: #ffcf4d;
   box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
+}
+
+.iconLink{
+  font-size: 1.8rem;
+  color: #fff;
+  transition: 200ms;
+}
+
+.iconLink:hover{
+  transform: translateY(-5px);
 }
