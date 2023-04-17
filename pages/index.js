@@ -37,19 +37,24 @@ export default function Home() {
       </div>
       <Divider title='My Skills' />
       <div className={styles.skillCards}>
-        <GlassSkillCard 
+        <GlassSkillCard
           cardHeader='Proficent With'
           cardContent='This is the card body'
         />
-        <GlassSkillCard 
+        <GlassSkillCard
           cardHeader='Experience With'
           cardContent='This is the card body'
         />
-        <GlassSkillCard 
+        <GlassSkillCard
           cardHeader='Exposure To'
           cardContent='This is the card body'
         />
       </div>
+      {/* This button is just for testing purposes */}
+      <div className={styles.buttonWrapper}>
+        <p className={styles.button}>This is going to be a stylish button</p>
+      </div>
+      <Divider />
     </div>
   )
 }
