@@ -1,3 +1,4 @@
+//TODO: Sheen moves over top of buttons wheen screen size gets smaller
 import styles from '../../styles/Component Styles/NavBar.module.css'
 import NavBarLink from './NavBarLink'
 
