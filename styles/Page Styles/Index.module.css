@@ -1,4 +1,4 @@
-.content{
+.content {
   margin: 0;
   padding: 0;
   display: flex;
@@ -7,10 +7,10 @@
   align-items: center;
 }
 
-.cards{
-  display: flex;
+.header {
+  color: #fff;
 }
 
-.header{
-  color: #fff;
+.cards {
+  display: flex;
 }
