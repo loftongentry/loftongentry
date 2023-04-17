@@ -10,3 +10,7 @@
 .cards{
   display: flex;
 }
+
+.header{
+  color: #fff;
+}
