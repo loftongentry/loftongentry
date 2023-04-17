@@ -10,7 +10,7 @@
   border-bottom-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  transition: 500ms;
+  transition: 200ms;
   overflow: hidden;
   position: relative;
 }
@@ -22,8 +22,8 @@
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
   filter: blur(0px);
-  transition: 600ms;
-  transform: skewX(45deg) translateX(calc(var(--width)));
+  transition: 400ms;
+  transform: skewX(45deg) translateX(calc(var(--width) + 180%));
 }
 
 .card:hover {
@@ -31,7 +31,7 @@
 }
 
 .card:hover:before {
-  transform: skewX(45deg) translateX(calc(var(--width) * -1 - 50%));
+  transform: skewX(45deg) translateX(calc(var(--width) * -1 - 200%));
 }
 
 .card {

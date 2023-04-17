@@ -1,4 +1,4 @@
-//TODO: Sheen moves over top of buttons wheen screen size gets smaller
+//TODO: Kinda fixed, but should compare with Footer sheen's
 import styles from '../../styles/Component Styles/NavBar.module.css'
 import NavBarLink from './NavBarLink'
 
