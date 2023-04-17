@@ -45,9 +45,18 @@
 }
 
 .box:nth-child(1):before,
-.box:nth-child(1):after
-{
+.box:nth-child(1):after {
   background: linear-gradient(315deg, #ffbc00, #ff0058)
+}
+
+.box:nth-child(2):before,
+.box:nth-child(2):after {
+  background: linear-gradient(315deg, #03a9f4, #ff0058)
+}
+
+.box:nth-child(3):before,
+.box:nth-child(3):after {
+  background: linear-gradient(315deg, #4dff03, #00d0ff)
 }
 
 .span {
@@ -135,31 +144,31 @@
   color: #fff;
 }
 
-.box::after .content{
+.box::after .content {
   left: -25px;
   padding: 60px 40px;
 }
 
-.cardHeader{
+.cardHeader {
   font-size: 2em;
   color: #fff;
   margin-bottom: 10px;
 }
 
-.cardContent{
+.cardContent {
   font-size: 1.1em;
   margin-bottom: 10px;
   line-height: 1.4em;
 }
 
-.cardFooter{
+.cardFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 6px;
 }
 
-.cardLink{
+.cardLink {
   display: inline-block;
   font-size: 1.1em;
   color: #111;
@@ -168,19 +177,20 @@
   border-radius: 4px;
   text-decoration: none;
   font-weight: 700;
+  border: none;
 }
 
-.cardLink:hover{
+.cardLink:hover {
   background: #ffcf4d;
   box-shadow: 0 1px 15px rgba(1, 1, 1, 0.2);
 }
 
-.iconLink{
+.iconLink {
   font-size: 1.8rem;
   color: #fff;
   transition: 200ms;
 }
 
-.iconLink:hover{
+.iconLink:hover {
   transform: translateY(-5px);
 }

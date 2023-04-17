@@ -1,0 +1,35 @@
+.cardHeader,
+.cardBodyContainer {
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.cardHeader {
+  margin-bottom: 5px;
+}
+
+.cardBodyContainer {
+  height: 300px;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.cardHeader,
+.cardContent {
+  color: #fff;
+}
+
+.cardHeader {
+  padding: 2px;
+  font-weight: 400;
+}
+
+.cardContent {
+  margin: 8px;
+}
