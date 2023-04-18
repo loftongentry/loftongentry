@@ -1,6 +1,7 @@
 //TODO: Kinda fixed, but kinda not, and need to get to work like Footer's sheen
-import styles from '../../styles/Component Styles/NavBar.module.css'
 import NavBarLink from './NavBarLink'
+import styles from '../../styles/Layout Component Styles/NavBar.module.css'
+
 
 const NavBar = () => {
   return (

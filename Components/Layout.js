@@ -1,6 +1,6 @@
 import NavBar from "./Layout Components/NavBar"
 import Footer from '@/Components/Layout Components/Footer'
-import styles from '../styles/Component Styles/Layout.module.css'
+import styles from '../styles/Layout Component Styles/Layout.module.css'
 
 const Layout = ({ children }) => {
   return (

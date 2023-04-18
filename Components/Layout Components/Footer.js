@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { FiGithub } from 'react-icons/fi'
 import { FaLinkedinIn } from 'react-icons/fa'
-import styles from '../../styles/Component Styles/Footer.module.css'
+import styles from '../../styles/Layout Component Styles/Footer.module.css'
+import Divider from '../Page Components/Divider'
 
 const Footer = () => {
   return (
@@ -14,6 +15,7 @@ const Footer = () => {
           <FaLinkedinIn className={styles.linkedIn} />
         </Link>
       </div>
+      <p className={styles.bottomContent}>This website was developed by Lofton and is receiving regular updates</p>
     </footer>
   )
 }

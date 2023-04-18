@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styles from '../../styles/Component Styles/NavBarLink.module.css'
+import styles from '../../styles/Layout Component Styles/NavBarLink.module.css'
 
 const NavBarLink = (props) => {
   return (
