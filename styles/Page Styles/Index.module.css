@@ -18,7 +18,6 @@
 .header:hover {}
 
 
-
 .cards,
 .skillCards {
   display: flex;
@@ -28,6 +27,10 @@
 
 @media(max-width: 768px) {
   .cards {
+    flex-direction: column;
+  }
+
+  .skillCards {
     flex-direction: column;
   }
 }

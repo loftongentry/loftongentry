@@ -69,3 +69,14 @@
   color: white;
   align-self: center;
 }
+
+.bottomContent{
+  color: #fff;
+  font-size: 12px;
+}
+
+@media(max-width: 428px){
+  .bottomContent{
+    font-size: 8px;
+  }
+}

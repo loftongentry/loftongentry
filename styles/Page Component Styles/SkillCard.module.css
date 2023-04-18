@@ -33,3 +33,9 @@
 .cardContent {
   margin: 8px;
 }
+
+@media(max-width: 428px){
+  .cardBodyContainer{
+    width: auto;
+  }
+}

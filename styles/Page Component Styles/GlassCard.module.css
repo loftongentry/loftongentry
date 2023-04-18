@@ -120,7 +120,6 @@
 }
 
 @keyframes animate {
-
   0%,
   100% {
     transform: translateY(10px);
@@ -193,4 +192,11 @@
 
 .iconLink:hover {
   transform: translateY(-5px);
+}
+
+@media(max-width: 428px){
+  .box{
+    transform: scale(0.85);
+    margin: 0;
+  }
 }
