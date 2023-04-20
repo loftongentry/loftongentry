@@ -1,7 +1,7 @@
 //TODO: Make height of the cards always the same
 import Link from 'next/link'
 import { FiGithub } from 'react-icons/fi'
-import styles from '../../../styles/Page Component Styles/GlassCard.module.css'
+import styles from '../../../styles/Page Component Styles/Index Styles/GlassCard.module.css'
 
 const GlassCard = (props) => {
   return (

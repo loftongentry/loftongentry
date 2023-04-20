@@ -1,4 +1,4 @@
-import styles from '../../../styles/Page Component Styles/SkillCardSkill.module.css'
+import styles from '../../../styles/Page Component Styles/Index Styles/SkillCardSkill.module.css'
 
 const GlassSkillCardSkill = (props) => {
   const Tag = props.tag

@@ -1,5 +1,5 @@
 import SkillCardSkill from './SkillCardSkill'
-import styles from '../../../styles/Page Component Styles/SkillCard.module.css'
+import styles from '../../../styles/Page Component Styles/Index Styles/SkillCard.module.css'
 
 const SkillCard = (props) => {
   return (

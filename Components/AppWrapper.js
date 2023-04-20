@@ -1,6 +1,6 @@
 import styles from '../styles/AppWrapper.module.css';
 
-const AppWrapper = ({ children }) => {
+const AppWrapper = ({ children }) => { 
   return (
     <div className={styles.body}>
       {children}
