@@ -3,7 +3,8 @@ import styles from '../styles/Page Styles/FruityShootyPage.module.css'
 
 const fruityShooty = () => {
   return (
-    <div className={styles.container}>
+    <div>
+      <p className={styles.disclaimer}>*This game currently only works on desktop*</p>
       <FruityShooty />
     </div>
   )
