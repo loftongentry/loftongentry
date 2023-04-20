@@ -1,3 +1,5 @@
+//TODO: Scrollbar appears over top of content, and doesn't have an ugly white bar
+
 import Layout from '@/Components/Layout'
 import { Poppins } from 'next/font/google'
 import AppWrapper from '@/Components/AppWrapper'
