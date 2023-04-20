@@ -43,3 +43,9 @@
   color: #fff;
   font-weight: 500;
 }
+
+@media(max-width: 428px){
+  .card{
+    transform: scale(0.7);
+  }
+}

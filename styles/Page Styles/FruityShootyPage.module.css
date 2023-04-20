@@ -1,0 +1,26 @@
+.disclaimer{
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+  color: #fff;
+  font-size: smaller;
+}
+
+@media(max-width: 1024px){
+  .disclaimer{
+    margin-bottom: -50px;
+  }
+}
+
+@media(max-width: 768px){
+  .disclaimer{
+    font-size: 12px;
+    margin-bottom: -50px;
+  }
+}
+
+@media(max-width: 428px){
+  .disclaimer{
+    margin-bottom: -100px;
+  }
+}
