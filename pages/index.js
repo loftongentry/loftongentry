@@ -1,17 +1,31 @@
+import { useState } from 'react'
 import GlassCard from '@/Components/Page Components/Index Components/GlassCard'
 import Divider from '@/Components/Page Components/Divider'
 import SkillCard from '@/Components/Page Components/Index Components/SkillCard'
-import styles from '../styles/Page Styles/Index.module.css'
 import { DiReact, DiCss3, DiJavascript, DiPython, DiJava } from 'react-icons/di'
 import { AiFillHtml5, AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGit } from 'react-icons/bs'
 import { SiPlanetscale, SiChakraui } from 'react-icons/si'
+import styles from '../styles/Page Styles/Index.module.css'
+import { border } from '@chakra-ui/react'
+import GlassModalForm from '@/Components/Page Components/Index Components/GlassModalForm'
+import buttonStyles from '../styles/Page Component Styles/Button.module.css'
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleClick = () => {
+    setModalOpen(prev => !prev)
+  }
+  
   return (
     <div className={styles.content}>
       <h1 className={styles.header}>Welcome!</h1>
+      <p className={styles.welcoming}>
+        Hello and welcome to my site! My name is Lofton and I am passionate about
+        pushing my boundaries in programming and trying new things whenever I get the chance
+      </p>
       <Divider title='Active Sites' />
       <div className={styles.cards}>
         <GlassCard
@@ -22,6 +36,13 @@ export default function Home() {
           cardLinkTitle='View Site'
           buttonTo={true}
           gitHubLink='https://github.com/loftongentry/gentry-auto-detailing'
+        />
+        <GlassCard
+          cardHeader={`Portfolio Website`}
+          cardContent='The current website that you are on. This website is mainly used for
+          demonstrating my growing skills with front-end programming'
+          buttonTo={false}
+          gitHubLink='https://github.com/loftongentry/loftongentry'
         />
       </div>
       <Divider title='Other Projects' />
@@ -55,6 +76,8 @@ export default function Home() {
         />
       </div>
       <Divider />
+      <button className={buttonStyles.button} onClick={handleClick}>Contact Me Here</button>
+      {modalOpen && (<GlassModalForm closeModal={handleClick}/>)}
     </div>
   )
 }
