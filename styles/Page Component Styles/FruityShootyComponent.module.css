@@ -1,11 +1,30 @@
 .container{
-  width: 500px;
-  height: 500px;
+  display: flex;
+  justify-content: center;
 }
 
 .container iframe{
   position: absolute;
-  width: 500px;
-  height: 505px;
+  width: 650px;
+  height: 650px;
   border: none;
+  border-radius: 10px;
+}
+
+@media(max-height: 845px){
+  .container iframe{
+    transform: scale(0.7);
+  }
+}
+
+@media(max-width: 428px){
+  .container iframe{
+    transform: scale(0.5);
+  }
+}
+
+@media(max-width: 320px){
+  .container iframe{
+    transform: scale(0.4);
+  }
 }
