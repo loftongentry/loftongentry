@@ -1,9 +1,10 @@
-import React from 'react'
+import FruityShooty from "@/Components/Page Components/Fruity Shooty Components/FruityShooty"
+import styles from '../styles/Page Styles/FruityShootyPage.module.css'
 
 const fruityShooty = () => {
   return (
-    <div>
-
+    <div className={styles.container}>
+      <FruityShooty />
     </div>
   )
 }
