@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Input from './Input'
+import Select from './Select'
+import TextArea from './TextArea'
 import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
 
@@ -47,7 +49,6 @@ const GlassModalForm = ({ closeModal }) => {
               type='text'
               name='firstName'
               label='First name'
-              placeholder='First Name'
               value={values.firstName}
               onChange={handleInputChange}
             />
@@ -55,7 +56,6 @@ const GlassModalForm = ({ closeModal }) => {
               type='text'
               name='lastName'
               label='Last Name'
-              placeholder='Last Name'
               value={values.lastName}
               onChange={handleInputChange}
             />
@@ -63,7 +63,6 @@ const GlassModalForm = ({ closeModal }) => {
               type='email'
               name='email'
               label='Email'
-              placeholder='Email'
               value={values.email}
               onChange={handleInputChange}
             />
@@ -71,19 +70,27 @@ const GlassModalForm = ({ closeModal }) => {
               type='tel'
               name='phoneNumber'
               label='Phone Number'
-              placeholder='Phone Number'
               value={values.phoneNumber}
               onChange={handleInputChange}
             />
-            {/* <select
-
+            <Select
+              label='Reaseon for Contacting'
+              name='contactReason'
+              value={values.contactReason}
+              onChange={handleInputChange}
+              options={['Job Opportunity', 'Design my Website', 'Other']}
             />
-            <textarea
-              placeholder='Additional Details'
-            /> */}
+            <TextArea
+              name='additionalDetails'
+              label='Additional Details'
+              value={values.additionalDetails}
+              onChange={handleInputChange}
+            />
           </div>
           <div className={styles.modalFooter}>
-            <button className={buttonStyles.button} onClick={onSubmit}>Submit</button>
+            {!isLoading ?
+              <button className={buttonStyles.button} onClick={onSubmit}>Submit</button>
+              : null}
           </div>
         </div>
       </div>
