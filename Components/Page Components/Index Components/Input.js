@@ -5,11 +5,7 @@ const Input = (props) => {
   const [hasError, setHasError] = useState(false)
 
   const handleBlur = () => {
-    if (!props.value) {
-      setHasError(true)
-    } else {
-      setHasError(false)
-    }
+    !props.value ? setHasError(true) : setHasError(false)
   }
 
   return (

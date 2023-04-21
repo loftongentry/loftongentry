@@ -1,0 +1,31 @@
+.selectContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.selectLabel {
+  color: #fff
+}
+
+.select {
+  border: none;
+  border-radius: 5px;
+  width: 260px;
+  padding: 5px;
+}
+
+.selectError {
+  border: 2px solid red;
+  border-radius: 5px;
+  width: 260px;
+  padding: 5px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: small;
+  margin: 1px;
+}
