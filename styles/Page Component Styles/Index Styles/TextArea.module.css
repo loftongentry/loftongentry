@@ -15,17 +15,5 @@
   border-radius: 5px;
   width: 250px;
   padding: 5px;
-}
-
-.textAreaError{
-  border: 2px solid red;
-  border-radius: 5px;
-  width: 250px;
-  padding: 5px;
-}
-
-.errorMessage{
-  color: red;
-  font-size: small;
-  margin: 1px;
+  margin-bottom: 10px;
 }
