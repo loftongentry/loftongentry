@@ -4,6 +4,7 @@ import Select from './Select'
 import TextArea from './TextArea'
 import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
+import { sendContactForm } from '@/library/sendContactForm'
 
 const initValues = {
   firstName: '',
@@ -30,9 +31,23 @@ const GlassModalForm = ({ closeModal }) => {
     }))
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log(formState)
-  }
+    setFormState(prev => ({
+      ...prev,
+      isLoading: true
+    }))
+    try{
+      await sendContactForm(values)
+      setFormState(initState)
+    } catch(e){
+      setFormState(prev => ({
+        ...prev,
+        isLoading: false,
+        error: e.message
+      }))
+    }
+  } 
 
   return (
     <div className={styles.modalWrapper}>
@@ -44,6 +59,7 @@ const GlassModalForm = ({ closeModal }) => {
           <div className={styles.modalHeader}>
             <h1>Contact Me</h1>
           </div>
+          {error && (<div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>{error}</div>)}
           <div className={styles.modalBody}>
             <Input
               type='text'
@@ -74,7 +90,7 @@ const GlassModalForm = ({ closeModal }) => {
               onChange={handleInputChange}
             />
             <Select
-              label='Reaseon for Contacting'
+              label='Reason for Contacting'
               name='contactReason'
               value={values.contactReason}
               onChange={handleInputChange}
@@ -82,7 +98,7 @@ const GlassModalForm = ({ closeModal }) => {
             />
             <TextArea
               name='additionalDetails'
-              label='Additional Details'
+              label='Additional Details (Optional)'
               value={values.additionalDetails}
               onChange={handleInputChange}
             />
