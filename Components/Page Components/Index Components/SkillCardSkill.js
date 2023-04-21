@@ -3,9 +3,14 @@ import styles from '../../../styles/Page Component Styles/Index Styles/SkillCard
 const GlassSkillCardSkill = (props) => {
   const Tag = props.tag
 
+  const style = {
+    fontSize: '25px',
+    color: props.tagStyle || 'black'
+  }
+
   return (
     <div className={styles.container}>
-      <Tag style={{ fontSize: '25px', color: `${props.tagStyle}` }} />
+      <Tag style={style} />
       <p className={styles.content}>{props.content}</p>
     </div>
   )

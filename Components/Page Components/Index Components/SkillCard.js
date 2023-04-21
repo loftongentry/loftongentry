@@ -10,7 +10,7 @@ const SkillCard = (props) => {
       <div className={styles.cardBodyContainer}>
         <div className={styles.cardContent}>
           {props.cardContent?.map((item, index) => (
-            <SkillCardSkill tag={props.tag[index]} tagStyle={props.tagStyle[index]} content={item} key={index}/>
+            <SkillCardSkill key={index} tag={props.tag[index]} tagStyle={props.tagStyle[index]} content={item} />
           ))}</div>
       </div>
     </div>
