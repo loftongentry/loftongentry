@@ -2,14 +2,13 @@ import { useState } from 'react'
 import GlassCard from '@/Components/Page Components/Index Components/GlassCard'
 import Divider from '@/Components/Page Components/Divider'
 import SkillCard from '@/Components/Page Components/Index Components/SkillCard'
+import GlassModalForm from '@/Components/Page Components/Index Components/GlassModalForm'
 import { DiReact, DiCss3, DiJavascript, DiPython, DiJava } from 'react-icons/di'
 import { AiFillHtml5, AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGit } from 'react-icons/bs'
 import { SiPlanetscale, SiChakraui } from 'react-icons/si'
 import styles from '../styles/Page Styles/Index.module.css'
-import { border } from '@chakra-ui/react'
-import GlassModalForm from '@/Components/Page Components/Index Components/GlassModalForm'
 import buttonStyles from '../styles/Page Component Styles/Button.module.css'
 
 export default function Home() {
@@ -30,6 +29,8 @@ export default function Home() {
       <div className={styles.cards}>
         <GlassCard
           cardHeader={`Gentry's Auto Detailing`}
+          languages='React, HTML, CSS'
+          timeline='Mar. - Apr. 2023'
           cardContent='This was a website I designed for a relative for their auto
           detailing business. This site was made using React'
           cardLink='https://gentry-auto-detailing.vercel.app/'
@@ -39,6 +40,8 @@ export default function Home() {
         />
         <GlassCard
           cardHeader={`Portfolio Website`}
+          languages='React, HTML, CSS'
+          timeline='Apr. 2023'
           cardContent='The current website that you are on. This website is mainly used for
           demonstrating my growing skills with front-end programming'
           buttonTo={false}
@@ -49,12 +52,16 @@ export default function Home() {
       <div className={styles.cards}>
         <GlassCard
           cardHeader='Fruity Shooty'
+          languages='Yacc, GML'
+          timeline='Oct. 2020'
           cardContent='This was a simple game I made to gain more experience with programming in general'
           buttonTo={false}
           gitHubLink='https://github.com/loftongentry/Fruity-Shooty'
         />
         <GlassCard
           cardHeader='Word Bag Extraction'
+          languages='Python'
+          timeline='Summer 2019'
           cardContent='This is a simple program I developed for the US government that displays the number of words that appear in a PDF document on a webpage'
           buttonTo={false}
           gitHubLink='https://github.com/loftongentry/Word-Bag-Extraction'
