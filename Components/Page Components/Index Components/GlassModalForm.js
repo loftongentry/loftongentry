@@ -5,6 +5,7 @@ import TextArea from './TextArea'
 import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
 import { sendContactForm } from '@/library/sendContactForm'
+import GlassLoader from './GlassLoader'
 
 const initValues = {
   firstName: '',
@@ -19,7 +20,16 @@ const initState = { values: initValues }
 
 const GlassModalForm = ({ closeModal }) => {
   const [formState, setFormState] = useState(initState)
+  const [fadeOut, setFadeOut] = useState(false)
   const { values, isLoading, error } = formState
+
+  const handleCloseModal = () => {
+    setFadeOut(true)
+    setTimeout(() => {
+      setFadeOut(false)
+      closeModal()
+    }, 300)
+  }
 
   const handleInputChange = ({ target }) => {
     setFormState(prevState => ({
@@ -37,29 +47,30 @@ const GlassModalForm = ({ closeModal }) => {
       ...prev,
       isLoading: true
     }))
-    try{
+    try {
       await sendContactForm(values)
       setFormState(initState)
-    } catch(e){
+      handleCloseModal()
+    } catch (e) {
       setFormState(prev => ({
         ...prev,
         isLoading: false,
         error: e.message
       }))
     }
-  } 
+  }
 
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.modalBackground}>
-        <div className={styles.modalContainer}>
+        <div className={fadeOut ? styles.modalContainerExit : styles.modalContainer}>
           <div className={styles.closeButton}>
-            <button onClick={closeModal}> X </button>
+            <button onClick={handleCloseModal}> X </button>
           </div>
           <div className={styles.modalHeader}>
             <h1>Contact Me</h1>
           </div>
-          {error && (<div style={{display: 'flex', justifyContent: 'center', color: 'red'}}>{error}</div>)}
+          {error && (<div style={{ display: 'flex', justifyContent: 'center', color: 'red' }}>{error}</div>)}
           <div className={styles.modalBody}>
             <Input
               type='text'
@@ -106,7 +117,7 @@ const GlassModalForm = ({ closeModal }) => {
           <div className={styles.modalFooter}>
             {!isLoading ?
               <button className={buttonStyles.button} onClick={onSubmit}>Submit</button>
-              : null}
+              : <GlassLoader />}
           </div>
         </div>
       </div>
