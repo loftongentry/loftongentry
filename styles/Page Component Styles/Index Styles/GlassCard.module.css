@@ -120,6 +120,7 @@
 }
 
 @keyframes animate {
+
   0%,
   100% {
     transform: translateY(10px);
@@ -154,10 +155,18 @@
   margin-bottom: 10px;
 }
 
+.languages,
+.timeline {
+  margin: 1px;
+}
+
+.languages span,
+.timeline span {
+  font-weight: 400;
+}
+
 .cardContent {
   font-size: 1.1em;
-  margin-bottom: 10px;
-  line-height: 1.4em;
 }
 
 .cardFooter {
@@ -194,8 +203,8 @@
   transform: translateY(-5px);
 }
 
-@media(max-width: 428px){
-  .box{
+@media(max-width: 428px) {
+  .box {
     transform: scale(0.85);
     margin: 0;
   }
