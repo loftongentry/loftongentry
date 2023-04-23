@@ -77,9 +77,15 @@ export default function Home() {
         />
         <SkillCard
           cardHeader='Experience With'
-          cardContent={['Chakra UI', 'Planetscale', 'Git', 'Python', 'Java']}
-          tag={[SiChakraui, SiPlanetscale, BsGit, DiPython, DiJava]}
-          tagStyle={['#319795', '#000000', '#F05032', '#3776AB', '']}
+          cardContent={['Chakra UI', 'Git', 'Python', 'Java']}
+          tag={[SiChakraui, BsGit, DiPython, DiJava]}
+          tagStyle={['#319795', '#F05032', '#3776AB', '']}
+        />
+        <SkillCard
+          cardHeader='Exposure To'
+          cardContent={['Planetscale']}
+          tag={[SiPlanetscale]}
+          tagStyle={['#000000']}
         />
       </div>
       <Divider />
