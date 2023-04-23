@@ -16,7 +16,7 @@
 
 .cardBodyContainer {
   height: 300px;
-  width: 400px;
+  width: fit-content;
   margin-bottom: 20px;
 }
 
