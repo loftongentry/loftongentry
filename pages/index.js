@@ -52,7 +52,7 @@ export default function Home() {
       <div className={styles.cards}>
         <GlassCard
           cardHeader='Fruity Shooty'
-          languages='Yacc, GML'
+          languages='GML'
           timeline='Oct. 2020'
           cardContent='This was a simple game I made to gain more experience with programming in general'
           buttonTo={false}
