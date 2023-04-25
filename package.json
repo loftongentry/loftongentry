@@ -6,17 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start-server": "node backend/server.js",
+    "server": "nodemon backend/server.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "framer-motion": "^10.11.5",
+    "mongodb": "^5.3.0",
+    "mongoose": "^7.0.4",
     "next": "13.3.0",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
