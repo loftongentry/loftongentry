@@ -14,10 +14,6 @@ const runSchema = mongoose.Schema({
   activeCalories: Number,
   //Total calories burned during run
   totalCalories: Number,
-  //Array of seconds it took for each mile ran
-  timeForEachMile: [{type: Number}],
-  //Array of seconds representing pace for each mile
-  avgPaceForMile: [{type: Number}],
 })
 
 module.exports = mongoose.model('Run', runSchema)
