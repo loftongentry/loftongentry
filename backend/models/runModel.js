@@ -1,19 +1,45 @@
 const mongoose = require('mongoose')
 
 const runSchema = mongoose.Schema({
-  date: Date,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
+  date: {
+    type: Date,
+    required: true
+  },
   //Total number of seconds ran
-  runTime: Number,
+  runTime: {
+    type: Number,
+    required: true
+  },
   //Distance in miles
-  runDistance: Number,
+  runDistance: {
+    type: Number,
+    required: true
+  },
   //Total number of seconds ran per mile
-  avgPace: Number,
+  avgPace: {
+    type: Number,
+    required: true
+  },
   //BPM
-  avgHeartRate: Number,
+  avgHeartRate: {
+    type: Number,
+    required: true
+  },
   //Active calories burned during run
-  activeCalories: Number,
+  activeCalories: {
+    type: Number,
+    required: true
+  },
   //Total calories burned during run
-  totalCalories: Number,
-})
+  totalCalories: {
+    type: Number,
+    required: true
+  }
+}, { timestamps: true })
 
 module.exports = mongoose.model('Run', runSchema)
