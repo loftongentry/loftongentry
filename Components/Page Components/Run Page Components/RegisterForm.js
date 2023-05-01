@@ -6,8 +6,8 @@ import styles from '../../../styles/Page Component Styles/Index Styles/GlassModa
 import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
 
 const initValues = {
-  userName: '',
-  userEmail: '',
+  name: '',
+  email: '',
   password: '',
   confirmPassword: ''
 }
@@ -69,18 +69,18 @@ const RegisterForm = ({ closeModal }) => {
           <div className={styles.modalBody}>
             <Input
               type='text'
-              id='userName'
-              name='userName'
+              id='name'
+              name='name'
               label='Your Name'
-              value={values.userName}
+              value={values.name}
               onChange={handleInputChange}
             />
             <Input
               type='email'
-              id='userEmail'
-              name='userEmail'
+              id='email'
+              name='email'
               label='Your Email'
-              value={values.userEmail}
+              value={values.email}
               onChange={handleInputChange}
             />
             <Input
