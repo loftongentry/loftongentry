@@ -1,6 +1,7 @@
 {
   "name": "loftongentry",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,28 +9,31 @@
     "start": "next start",
     "lint": "next lint",
     "start-server": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "appStart": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.5.5",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
-    "framer-motion": "^10.11.5",
     "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.3.0",
-    "mongoose": "^7.0.4",
+    "mongoose": "^7.1.0",
     "next": "13.3.0",
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "react-redux": "^8.0.5",
+    "react-toastify": "^9.1.2",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "nodemon": "^2.0.22"
   }
 }

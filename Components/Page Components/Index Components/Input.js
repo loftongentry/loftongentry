@@ -14,6 +14,7 @@ const Input = (props) => {
       <input
         className={hasError ? styles.inputError : styles.input}
         type={props.type}
+        id={props.id}
         name={props.name}
         placeholder={props.placeholder}
         value={props.value}

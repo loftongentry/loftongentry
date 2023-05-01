@@ -1,24 +1,20 @@
 import { useState } from 'react'
-import Input from './Input'
-import Select from './Select'
-import TextArea from './TextArea'
+import GlassLoader from '../Index Components/GlassLoader'
+import Input from '../Index Components/Input'
+import { register } from '../../../pages/api/authentication'
 import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
-import { sendContactForm } from '@/library/sendContactForm'
-import GlassLoader from './GlassLoader'
 
 const initValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phoneNumber: '',
-  contactReason: '',
-  additionalDetails: '',
+  userName: '',
+  userEmail: '',
+  password: '',
+  confirmPassword: ''
 }
 
 const initState = { values: initValues }
 
-const GlassModalForm = ({ closeModal }) => {
+const RegisterForm = ({ closeModal }) => {
   const [formState, setFormState] = useState(initState)
   const [fadeOut, setFadeOut] = useState(false)
   const { values, isLoading, error } = formState
@@ -47,11 +43,10 @@ const GlassModalForm = ({ closeModal }) => {
       isLoading: true
     }))
     try {
-      await sendContactForm(values)
+      await register(values)
       setFormState(initState)
       handleCloseModal()
-    } catch (e) {
-      console.log(e)
+    } catch(e){
       setFormState(prev => ({
         ...prev,
         isLoading: false,
@@ -68,53 +63,40 @@ const GlassModalForm = ({ closeModal }) => {
             <button onClick={handleCloseModal}> X </button>
           </div>
           <div className={styles.modalHeader}>
-            <h1>Contact Me</h1>
+            <h1>Register Here</h1>
           </div>
           {error && (<div style={{ display: 'flex', justifyContent: 'center', color: 'red' }}>{error}</div>)}
           <div className={styles.modalBody}>
             <Input
               type='text'
-              id='firstName'
-              name='firstName'
-              label='First name'
-              value={values.firstName}
-              onChange={handleInputChange}
-            />
-            <Input
-              type='text'
-              id='lastName'
-              name='lastName'
-              label='Last Name'
-              value={values.lastName}
+              id='userName'
+              name='userName'
+              label='Your Name'
+              value={values.userName}
               onChange={handleInputChange}
             />
             <Input
               type='email'
-              id='email'
-              name='email'
-              label='Email'
-              value={values.email}
+              id='userEmail'
+              name='userEmail'
+              label='Your Email'
+              value={values.userEmail}
               onChange={handleInputChange}
             />
             <Input
-              type='tel'
-              id='phoneNumber'
-              name='phoneNumber'
-              label='Phone Number'
-              value={values.phoneNumber}
+              type='password'
+              id='password'
+              name='password'
+              label='Your Password'
+              value={values.password}
               onChange={handleInputChange}
             />
-            <Select
-              label='Reason for Contacting'
-              name='contactReason'
-              value={values.contactReason}
-              onChange={handleInputChange}
-              options={['Job Opportunity', 'Design my Website', 'Other']}
-            />
-            <TextArea
-              name='additionalDetails'
-              label='Additional Details (Optional)'
-              value={values.additionalDetails}
+            <Input
+              type='password'
+              id='confirmPassword'
+              name='confirmPassword'
+              label='Confirm Password'
+              value={values.confirmPassword}
               onChange={handleInputChange}
             />
           </div>
@@ -129,4 +111,4 @@ const GlassModalForm = ({ closeModal }) => {
   )
 }
 
-export default GlassModalForm
+export default RegisterForm

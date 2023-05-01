@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { FiGithub } from 'react-icons/fi'
 import { FaLinkedinIn } from 'react-icons/fa'
 import styles from '../../styles/Layout Component Styles/Footer.module.css'
-import Divider from '../Page Components/Divider'
 
 const Footer = () => {
   return (
