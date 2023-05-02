@@ -1,14 +1,16 @@
 import { useState } from "react"
-import { FaSignInAlt, FaSignOutAlt, FaUser} from "react-icons/fa"
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
 import LoginForm from "@/Components/Page Components/Run Page Components/LoginForm"
 import RegisterForm from '@/Components/Page Components/Run Page Components/RegisterForm'
-import styles from '../styles/Page Styles/Runs.module.css'
-import buttonStyles from '../styles/Page Component Styles/Button.module.css'
+import RunDataForm from "@/Components/Page Components/Run Page Components/RunDataForm"
+import { logout } from "./api/authentication"
+import styles from '@/styles/Page Styles/Runs.module.css'
+import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
   const [modalRegisterOpen, setModalRegisterOpen] = useState(false)
-  const [modalUserOpen, setModalUserOpen] = useState(false)
+  const [modalRunForm, setModalRunForm] = useState(false)
 
 
   const handleLogin = () => {
@@ -19,8 +21,12 @@ const runs = () => {
     setModalRegisterOpen(prev => !prev)
   }
 
-  const handleUserOpen = () => {
-    setModalUserOpen(prev => !prev)
+  const handleRunForm = () => {
+    setModalRunForm(prev => !prev)
+  }
+
+  const handleLogout = () => {
+    logout()
   }
 
   return (
@@ -32,9 +38,16 @@ const runs = () => {
         <button className={buttonStyles.button} onClick={handleRegister}>
           <FaUser /> Register
         </button>
+        <button className={buttonStyles.button} onClick={handleRunForm}>
+          Register New Run
+        </button>
+        <button className={buttonStyles.button} onClick={handleLogout}>
+          <FaSignOutAlt /> Logout
+        </button>
       </header>
-      {modalLoginOpen && (<LoginForm closeModal={handleLogin}/>)}
-      {modalRegisterOpen && (<RegisterForm closeModal={handleRegister}/>)}
+      {modalLoginOpen && (<LoginForm closeModal={handleLogin} />)}
+      {modalRegisterOpen && (<RegisterForm closeModal={handleRegister} />)}
+      {modalRunForm && (<RunDataForm closeModal={handleRunForm} />)}
     </>
   )
 }

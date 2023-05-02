@@ -3,9 +3,10 @@ import styles from '../../../styles/Page Component Styles/Index Styles/GlassModa
 import Input from '../../Form Components/Input'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import GlassLoader from '../../Global Components/GlassLoader'
+import { login } from '@/pages/api/authentication'
 
 const initValues = {
-  userEmail: '',
+  email: '',
   password: ''
 }
 
@@ -14,7 +15,6 @@ const initState = { values: initValues }
 const LoginForm = ({ closeModal }) => {
   const [formState, setFormState] = useState(initState)
   const [fadeOut, setFadeOut] = useState(false)
-
   const { values, isLoading, error } = formState
 
   const handleCloseModal = () => {
@@ -35,7 +35,23 @@ const LoginForm = ({ closeModal }) => {
     }))
   }
 
-  const onSubmit = () => { }
+  const onSubmit = async () => {
+    setFormState(prev => ({
+      ...prev,
+      isLoading: true
+    }))
+    try{
+      await login(values)
+      setFormState(initState)
+      handleCloseModal()
+    } catch(e){
+      setFormState(prev => ({
+        ...prev,
+        isLoading: false,
+        error: e.message
+      }))
+    }
+  }
 
   return (
     <div className={styles.modalWrapper}>
@@ -51,10 +67,10 @@ const LoginForm = ({ closeModal }) => {
           <div className={styles.modalBody}>
             <Input
               type='email'
-              id='userEmail'
-              name='userEmail'
+              id='email'
+              name='email'
               label='User Email'
-              value={values.userEmail}
+              value={values.email}
               onChange={handleInputChange}
             />
             <Input
