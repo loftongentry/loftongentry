@@ -15,22 +15,24 @@ const getRuns = asyncHandler(async (req, res) => {
 //@route  POST /api/runsData
 //@access Private
 const setRun = asyncHandler(async (req, res) => {
-  if (!req.body.date || !req.body.runTime || !req.body.runDistance || !req.body.avgPace || !req.body.avgHeartRate || !req.body.activeCalories || !req.body.totalCalories) {
-    res.status(400)
-    throw new Error('Please fill in all fields')
+  try {
+    if (!req.body.date || !req.body.runTime || !req.body.runDistance || !req.body.avgPace || !req.body.avgHeartRate || !req.body.activeCalories || !req.body.totalCalories) {
+      res.status(400).json({ message: 'Please fill in all fields' })
+    }
+
+    const run = await Run.create({
+      date: req.body.date,
+      runTime: req.body.runTime,
+      runDistance: req.body.runDistance,
+      avgPace: req.body.avgPace,
+      avgHeartRate: req.body.avgHeartRate,
+      activeCalories: req.body.activeCalories,
+      totalCalories: req.body.activeCalories,
+      user: req.user.id
+    })
+  } catch (error) {
+    res.status(500).json({message: 'Internal Server Error'})
   }
-
-  const run = await Run.create({
-    date: req.body.date,
-    runTime: req.body.runTime,
-    runDistance: req.body.runDistance,
-    avgPace: req.body.avgPace,
-    avgHeartRate: req.body.avgHeartRate,
-    activeCalories: req.body.activeCalories,
-    totalCalories: req.body.activeCalories,
-    user: req.user.id
-  })
-
   res.status(200).json(run)
 })
 
@@ -47,13 +49,13 @@ const updateRun = asyncHandler(async (req, res) => {
 
   const user = await User.findById(req.user.id)
   //Check for user
-  if(!user){
+  if (!user) {
     res.status(401)
     throw new Error('User Not Found')
   }
 
   //Make sure the logged in user matches the goal user
-  if(run.user.toString() !== user.id){
+  if (run.user.toString() !== user.id) {
     res.status(401)
     throw new Error('User Not Authorized')
   }
@@ -76,13 +78,13 @@ const deleteRun = asyncHandler(async (req, res) => {
 
   const user = await User.findById(req.user.id)
   //Check for user
-  if(!user){
+  if (!user) {
     res.status(401)
     throw new Error('User Not Found')
   }
 
   //Make sure the logged in user matches the goal user
-  if(run.user.toString() !== user.id){
+  if (run.user.toString() !== user.id) {
     res.status(401)
     throw new Error('User Not Authorized')
   }
