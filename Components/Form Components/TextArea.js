@@ -1,4 +1,4 @@
-import styles from '../../../styles/Page Component Styles/Index Styles/TextArea.module.css'
+import styles from '@/styles/Form Component Styles/TextArea.module.css'
 
 const TextArea = (props) => {
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../../../styles/Page Component Styles/Index Styles/Input.module.css'
+import styles from '@/styles/Form Component Styles/Input.module.css'
 
 const Input = (props) => {
   const [hasError, setHasError] = useState(false)

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
-import Input from '../Index Components/Input'
-import buttonStyles from '../../../styles/Page Component Styles/Button.module.css'
-import GlassLoader from '../Index Components/GlassLoader'
+import Input from '../../Form Components/Input'
+import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
+import GlassLoader from '../../Global Components/GlassLoader'
 
 const initValues = {
   userEmail: '',

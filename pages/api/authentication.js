@@ -1,4 +1,3 @@
-import axios from "axios";
 import { httpClient } from "@/config/httpClient";
 
 //Register a user

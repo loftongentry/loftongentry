@@ -1,4 +1,4 @@
-import styles from '../../../styles/Page Component Styles/Index Styles/GlassLoader.module.css'
+import styles from '@/styles/Global Component Styles/GlassLoader.module.css'
 
 const GlassLoader = () => {
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import GlassCard from '@/Components/Page Components/Index Components/GlassCard'
-import Divider from '@/Components/Page Components/Divider'
+import Divider from '@/Components/Global Components/Divider'
 import SkillCard from '@/Components/Page Components/Index Components/SkillCard'
 import GlassModalForm from '@/Components/Page Components/Index Components/GlassModalForm'
 import { DiReact, DiCss3, DiJavascript, DiPython, DiJava } from 'react-icons/di'
@@ -8,8 +8,8 @@ import { AiFillHtml5, AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGit } from 'react-icons/bs'
 import { SiPlanetscale, SiChakraui } from 'react-icons/si'
-import styles from '../styles/Page Styles/Index.module.css'
-import buttonStyles from '../styles/Page Component Styles/Button.module.css'
+import styles from '@/styles/Page Styles/Index.module.css'
+import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false)

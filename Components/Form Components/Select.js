@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from '../../../styles/Page Component Styles/Index Styles/Select.module.css'
+import styles from '@/styles/Form Component Styles/Select.module.css'
 
 const Select = (props) => {
   const [hasError, setHasError] = useState(false)

@@ -1,4 +1,4 @@
-import styles from '../../styles/Page Component Styles/Divider.module.css'
+import styles from '@/styles/Global Component Styles/Divider.module.css'
 
 const Divider = ({title}) => {
   return (
