@@ -30,10 +30,10 @@ const setRun = asyncHandler(async (req, res) => {
       totalCalories: req.body.activeCalories,
       user: req.user.id
     })
+    res.status(200).json(run)
   } catch (error) {
     res.status(500).json({message: 'Internal Server Error'})
   }
-  res.status(200).json(run)
 })
 
 //@desc   Update Run
