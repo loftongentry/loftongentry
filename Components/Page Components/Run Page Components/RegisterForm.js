@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import GlassLoader from '../../Global Components/GlassLoader'
 import Input from '../../Form Components/Input'
-import { register } from '@/pages/api/authentication'
+import { register } from '@/pages/api/authenticationAPI'
 import styles from '@/styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
