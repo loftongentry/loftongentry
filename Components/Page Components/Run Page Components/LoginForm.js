@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import Input from '../../Form Components/Input'
-import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import GlassLoader from '../../Global Components/GlassLoader'
-import { login } from '@/pages/api/authentication'
+import { login } from '@/pages/api/authenticationAPI'
+import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
+import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
 const initValues = {
   email: '',
@@ -40,11 +40,11 @@ const LoginForm = ({ closeModal }) => {
       ...prev,
       isLoading: true
     }))
-    try{
+    try {
       await login(values)
       setFormState(initState)
       handleCloseModal()
-    } catch(e){
+    } catch (e) {
       setFormState(prev => ({
         ...prev,
         isLoading: false,
