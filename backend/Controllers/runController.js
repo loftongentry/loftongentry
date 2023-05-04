@@ -7,6 +7,11 @@ const User = require('../models/userModel')
 //@access Private
 const getRuns = asyncHandler(async (req, res) => {
   const runs = await Run.find({ user: req.user.id })
+  
+  if (!runs) {
+    res.status(400).json({ message: 'No Runs Found for This User' })
+    return
+  }
 
   res.status(200).json(runs)
 })
@@ -32,7 +37,7 @@ const setRun = asyncHandler(async (req, res) => {
     })
     res.status(200).json(run)
   } catch (error) {
-    res.status(500).json({message: 'Internal Server Error'})
+    res.status(500).json({ message: 'Internal Server Error' })
   }
 })
 
