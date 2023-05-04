@@ -8,13 +8,21 @@ const User = require('../models/userModel')
 //@access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, confirmPassword } = req.body
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   try {
+    //Check to make sure all inputs are filled
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'Please add all fields' })
     }
 
+    //Check to make sure that the password and the confirmPassword are equal
     if (password != confirmPassword) {
       return res.status(400).json({ message: 'Passwords Do Not Match' })
+    }
+
+    //Tests the email submitted to make sure it's an acutal email using a RegEx
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Please Enter a Valid Email' })
     }
 
     //Check if user exists
@@ -96,7 +104,7 @@ const getMe = asyncHandler(async (req, res) => {
 
 //Generate JWT
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: '7d'})
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' })
 }
 
 module.exports = {
