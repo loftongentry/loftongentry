@@ -4,6 +4,7 @@ import LoginForm from "@/Components/Page Components/Run Page Components/LoginFor
 import RegisterForm from '@/Components/Page Components/Run Page Components/RegisterForm'
 import RunDataForm from "@/Components/Page Components/Run Page Components/RunDataForm"
 import { logout } from "./api/authenticationAPI"
+import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
@@ -12,11 +13,13 @@ const runs = () => {
   const [modalRegisterOpen, setModalRegisterOpen] = useState(false)
   const [modalRunForm, setModalRunForm] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
+  const [runData, setRunData] = useState([])
 
   useEffect(() => {
     const user = window.localStorage.getItem('user')
     if (user) {
       setLoggedIn(true)
+      getRuns().then(runs => setRunData(runs))
     }
   }, [])
 
@@ -61,8 +64,27 @@ const runs = () => {
       {modalLoginOpen && (<LoginForm closeModal={handleLogin} />)}
       {modalRegisterOpen && (<RegisterForm closeModal={handleRegister} />)}
       {modalRunForm && (<RunDataForm closeModal={handleRunForm} />)}
+      {
+        loggedIn && runData && (
+          <ul>
+            {runData?.map((run, index) => (
+              <div key={index}>
+                <li>{run.date}</li>
+                <li>{run.runTime}</li>
+                <li>{run.runDistance}</li>
+                <li>{run.avgHeartRate}</li>
+                <li>{run.activeCalories}</li>
+                <li>{run.totalCalories}</li>
+              </div>
+            ))}
+          </ul>
+        )
+      }
+
     </>
   )
 }
+
+
 
 export default runs
