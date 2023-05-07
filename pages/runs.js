@@ -7,6 +7,17 @@ import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
+import RunGraph from "@/Components/Page Components/Run Page Components/RunGraph"
+
+const data = [
+  { date: "2022-01-01", value: 100 },
+  { date: "2022-01-02", value: 150 },
+  { date: "2022-01-03", value: 200 },
+  { date: "2022-01-04", value: 170 },
+  { date: "2022-01-05", value: 220 },
+  { date: "2022-01-06", value: 250 },
+  { date: "2022-01-07", value: 200 }
+];
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -23,18 +34,6 @@ const runs = () => {
     }
   }, [])
 
-  const handleLogin = () => {
-    setModalLoginOpen(prev => !prev)
-  }
-
-  const handleRegister = () => {
-    setModalRegisterOpen(prev => !prev)
-  }
-
-  const handleRunForm = () => {
-    setModalRunForm(prev => !prev)
-  }
-
   const handleLogout = () => {
     logout()
     setLoggedIn(false)
@@ -44,16 +43,16 @@ const runs = () => {
     <>
       <header className={styles.header}>
         {!loggedIn ?
-          (<div><button className={buttonStyles.button} onClick={handleLogin}>
+          (<div><button className={buttonStyles.button} onClick={() => setModalLoginOpen(prev => !prev)}>
             <FaSignInAlt /> Login
           </button>
-            <button className={buttonStyles.button} onClick={handleRegister}>
+            <button className={buttonStyles.button} onClick={() => setModalRegisterOpen(prev => !prev)}>
               <FaUser /> Register
             </button>
           </div>)
           :
           (<div>
-            <button className={buttonStyles.button} onClick={handleRunForm}>
+            <button className={buttonStyles.button} onClick={() => setModalRunForm(prev => !prev)}>
               Register New Run
             </button>
             <button className={buttonStyles.button} onClick={handleLogout}>
@@ -61,30 +60,13 @@ const runs = () => {
             </button>
           </div>)}
       </header>
-      {modalLoginOpen && (<LoginForm closeModal={handleLogin} />)}
-      {modalRegisterOpen && (<RegisterForm closeModal={handleRegister} />)}
-      {modalRunForm && (<RunDataForm closeModal={handleRunForm} />)}
-      {
-        loggedIn && runData && (
-          <ul>
-            {runData?.map((run, index) => (
-              <div key={index}>
-                <li>{run.date}</li>
-                <li>{run.runTime}</li>
-                <li>{run.runDistance}</li>
-                <li>{run.avgHeartRate}</li>
-                <li>{run.activeCalories}</li>
-                <li>{run.totalCalories}</li>
-              </div>
-            ))}
-          </ul>
-        )
-      }
-
+      {modalLoginOpen && (<LoginForm closeModal={() => setModalLoginOpen(prev => !prev)} />)}
+      {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
+      {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
+      {/* {runData && <RunGraph data={runData}/>} */}
+      <RunGraph data={data} />
     </>
   )
 }
-
-
 
 export default runs
