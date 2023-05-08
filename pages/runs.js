@@ -9,16 +9,6 @@ import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import RunGraph from "@/Components/Page Components/Run Page Components/RunGraph"
 
-const data = [
-  { date: "2022-01-01", value: 100 },
-  { date: "2022-01-02", value: 150 },
-  { date: "2022-01-03", value: 200 },
-  { date: "2022-01-04", value: 170 },
-  { date: "2022-01-05", value: 220 },
-  { date: "2022-01-06", value: 250 },
-  { date: "2022-01-07", value: 200 }
-];
-
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
   const [modalRegisterOpen, setModalRegisterOpen] = useState(false)
@@ -29,8 +19,8 @@ const runs = () => {
   useEffect(() => {
     const user = window.localStorage.getItem('user')
     if (user) {
-      setLoggedIn(true)
       getRuns().then(runs => setRunData(runs))
+      setLoggedIn(true)
     }
   }, [])
 
@@ -63,8 +53,7 @@ const runs = () => {
       {modalLoginOpen && (<LoginForm closeModal={() => setModalLoginOpen(prev => !prev)} />)}
       {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
       {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
-      {/* {runData && <RunGraph data={runData}/>} */}
-      <RunGraph data={data} />
+      {runData.length > 0 && <RunGraph data={runData} />}
     </>
   )
 }
