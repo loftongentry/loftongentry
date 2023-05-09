@@ -7,7 +7,7 @@ import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
-import RunGraph from "@/Components/Page Components/Run Page Components/RunGraph"
+import RunGraph from "@/Components/Page Components/Run Page Components/Graphs/AvgPaceGraph"
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
