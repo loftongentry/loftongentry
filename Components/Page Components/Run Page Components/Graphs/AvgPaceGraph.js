@@ -10,23 +10,17 @@ const RunGraph = ({ data }) => {
       date: item.date,
       avgPace: item.avgPace,
     }))
-    
-    chartData.forEach(o=>{o.date = new Date(o.date)})
-    
-    const margin = { top: 20, right: 20, bottom: 30, left: 50 }
-    const width = 960 - margin.left - margin.right
-    const height = 500 - margin.top - margin.bottom
+
+    chartData.forEach(o => { o.date = new Date(o.date) })
+
+    const width = 360
+    const height = 400
 
     const svg = d3.select(svgRef.current)
 
     //Maps a continuous time domain to a continuous output range, such as mapping a date value to a position along a time axis
     const x = d3.scaleTime()
-      //Returns an array of evenly spaced numbers from the first element array to the last element in the array minus 1 (Basically just for generating tick marks on a graph)
       .range([0, width])
-      /*
-      Sets the domain of the time scale to the earliest data and most recent date. (Domain is basically the maximum and minimum values that an axis can handle)
-      `d3.extent` finds the maximum and minimum values as specified in the data set
-      */
       .domain(d3.extent(chartData, d => d.date))
       .nice()
 
@@ -44,11 +38,9 @@ const RunGraph = ({ data }) => {
       d3.max(chartData, d => d3.max(values, value => d[value]))
     ])
 
-    //Create a line generator function
+    //Create a line generator function with x coordinate of each data point to be average pace and y-coordinate to be date
     const line = d3.line()
-      //Sets the x coordinate of each data point to be the date value of the data point, scaled using the 'x' scale
       .x(d => x(d.date))
-      //Sets the y coordinate of each data point to be the date value of the data point, scaled using the 'y' scale
       .y(d => y(d.avgPace))
 
     //Maps over the array of keys in 'values' to create an array of line objects
@@ -59,7 +51,6 @@ const RunGraph = ({ data }) => {
         path: svg
           .append('path')
           .datum(chartData)
-          //These are all styling attributes of the lines that are generated
           .attr('fill', 'none')
           .attr('stroke', 'steelBlue')
           .attr('stroke-width', 1.5)
@@ -75,36 +66,14 @@ const RunGraph = ({ data }) => {
       .call(d3.axisBottom(x))
 
     //Generates a vertical axis with tick marks and labels based on the y scale that was previously defined and appends it to the left side of the SVG
-    svg.append('g').call(d3.axisLeft(y))
-
-    //Adding the legend
-    const legend = svg
-      .selectAll('.legend')
-      .data(paths)
-      .enter()
+    svg
       .append('g')
-      .attr('class', 'legend')
-      .attr('transform', (d, i) => `translate(0, ${i * 20})`)
+      .attr('transform', `translate(20, 5)`)
+      .call(d3.axisLeft(y))
 
-    legend
-      .append('rect')
-      .attr('x', width - 18)
-      .attr('width', 18)
-      .attr('height', 18)
-      .style('fill', d => d.path.attr('stroke'))
-
-    legend
-      .append('text')
-      .attr('x', width - 24)
-      .attr('y', 9)
-      .attr('dy', '.35em')
-      .style('text-anchor', 'end')
-      .text(d => d.value)
-    
-    console.log(chartData)
   }, [data])
 
-  
+
   return (
     <svg ref={svgRef}>
 
