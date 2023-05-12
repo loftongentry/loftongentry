@@ -10,7 +10,9 @@ const RunGraph = ({ data }) => {
       date: item.date,
       avgPace: item.avgPace,
     }))
-
+    
+    chartData.forEach(o=>{o.date = new Date(o.date)})
+    
     const margin = { top: 20, right: 20, bottom: 30, left: 50 }
     const width = 960 - margin.left - margin.right
     const height = 500 - margin.top - margin.bottom
@@ -65,7 +67,7 @@ const RunGraph = ({ data }) => {
           .attr('d', line.y(d => y(d[value])))
       }
     })
-    console.log(paths)
+
     //Generates a horizontal axis with tick marks and labels based on the x scale that was previously defined and appends it to the bottom of the SVG
     svg
       .append('g')
@@ -76,29 +78,30 @@ const RunGraph = ({ data }) => {
     svg.append('g').call(d3.axisLeft(y))
 
     //Adding the legend
-    // const legend = svg
-    //   .selectAll('.legend')
-    //   .data(paths)
-    //   .enter()
-    //   .append('g')
-    //   .attr('class', 'legend')
-    //   .attr('transform', (d, i) => `translate(0, ${i * 20})`)
+    const legend = svg
+      .selectAll('.legend')
+      .data(paths)
+      .enter()
+      .append('g')
+      .attr('class', 'legend')
+      .attr('transform', (d, i) => `translate(0, ${i * 20})`)
 
-    // legend
-    //   .append('rect')
-    //   .attr('x', width - 18)
-    //   .attr('width', 18)
-    //   .attr('height', 18)
-    //   .style('fill', d => d.path.attr('stroke'))
+    legend
+      .append('rect')
+      .attr('x', width - 18)
+      .attr('width', 18)
+      .attr('height', 18)
+      .style('fill', d => d.path.attr('stroke'))
 
-    // legend
-    //   .append('text')
-    //   .attr('x', width - 24)
-    //   .attr('y', 9)
-    //   .attr('dy', '.35em')
-    //   .style('text-anchor', 'end')
-    //   .text(d => d.value)
-    console.log(typeof chartData[0].avgPace)
+    legend
+      .append('text')
+      .attr('x', width - 24)
+      .attr('y', 9)
+      .attr('dy', '.35em')
+      .style('text-anchor', 'end')
+      .text(d => d.value)
+    
+    console.log(chartData)
   }, [data])
 
   
