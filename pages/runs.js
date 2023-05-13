@@ -7,7 +7,7 @@ import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
-import RunGraph from "@/Components/Page Components/Run Page Components/Graphs/AvgPaceGraph"
+import AvgPaceGraph from "@/Components/Page Components/Run Page Components/Graphs/AvgPaceGraph"
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -53,7 +53,7 @@ const runs = () => {
       {modalLoginOpen && (<LoginForm closeModal={() => setModalLoginOpen(prev => !prev)} />)}
       {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
       {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
-      {runData.length > 0 && <RunGraph data={runData} />}
+      {runData.length > 0 && <AvgPaceGraph data={runData} />}
     </>
   )
 }
