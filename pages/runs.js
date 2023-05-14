@@ -53,7 +53,9 @@ const runs = () => {
       {modalLoginOpen && (<LoginForm closeModal={() => setModalLoginOpen(prev => !prev)} />)}
       {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
       {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
-      {runData.length > 0 && <AvgPaceGraph data={runData} />}
+      <div className={styles.graphContainer}>
+        {runData.length > 0 && <AvgPaceGraph data={runData} />}
+      </div>
     </>
   )
 }
