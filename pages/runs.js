@@ -7,7 +7,7 @@ import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
-import AvgPaceGraph from "@/Components/Page Components/Run Page Components/Graphs/AvgPaceGraph"
+import Graph from "@/Components/Page Components/Run Page Components/Graphs/Graph"
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -28,6 +28,16 @@ const runs = () => {
     logout()
     setLoggedIn(false)
   }
+
+  const chartData = runData?.map(d => ({
+    date: d.date,
+    runTime: d.runTime,
+    runDistance: d.runDistance,
+    avgPace: d.avgPace,
+    avgHeartRate: d.avgHeartRate,
+    activeCalories: d.activeCalories,
+    totalCalories: d.totalCalories,
+  }))
 
   return (
     <>
@@ -54,7 +64,51 @@ const runs = () => {
       {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
       {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
       <div className={styles.graphContainer}>
-        {runData.length > 0 && <AvgPaceGraph data={runData} />}
+        {runData.length > 0 &&
+          <div>
+            <Graph
+              graphName='Run Time'
+              dataPropName='runTime'
+              data={() => runData?.map(d => ({
+                date: d.date,
+                runTime: d.runTime,
+              }))}
+            />
+            <Graph
+              graphName='Run Distance'
+              dataPropName='runDistance'
+              data={() => runData?.map(d => ({
+                date: d.date,
+                runDistance: d.runDistance
+              }))}
+            />
+            <Graph
+              graphName='Average Pace'
+              dataPropName='avgPace'
+              data={() => runData?.map(d => ({
+                date: d.date,
+                avgPace: d.avgPace
+              }))}
+            />
+            <Graph
+              graphName='Average Heart Rate'
+              dataPropName='avgHeartRate'
+              data={() => runData?.map(d => ({
+                date: d.date,
+                avgHeartRate: d.avgHeartRate
+              }))}
+            />
+            <Graph
+              graphName={['Active Calories', 'Total Calories']}
+              dataPropName={['activeCalories', 'totalCalories']}
+              data={() => runData?.map(d => ({
+                date: d.date,
+                activeCalories: d.activeCalories,
+                totalCalories: d.totalCalories,
+              }))}
+            />
+          </div>
+        }
       </div>
     </>
   )
