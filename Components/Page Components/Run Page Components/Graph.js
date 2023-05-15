@@ -1,3 +1,4 @@
+//TODO: Graph should be a 2x2 grid until a certain screen width
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import styles from '@/styles/Page Component Styles/Graph.module.css'

@@ -1,3 +1,4 @@
+//TODO: Adding a item that shows the overall average pace, and the total distance ran (per month, year, etc. Another graph possibly?)
 import { useEffect, useState } from "react"
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
 import LoginForm from "@/Components/Page Components/Run Page Components/LoginForm"
