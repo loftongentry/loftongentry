@@ -79,7 +79,7 @@ const RunDataForm = ({ closeModal }) => {
               onChange={handleInputChange}
             />
             <Input
-              type='number'
+              type='text'
               id='runTime'
               name='runTime'
               label='Run Time'
@@ -95,7 +95,7 @@ const RunDataForm = ({ closeModal }) => {
               onChange={handleInputChange}
             />
             <Input
-              type='number'
+              type='text'
               id='avgPace'
               name='avgPace'
               label='Average Pace'

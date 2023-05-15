@@ -7,7 +7,7 @@ const User = require('../models/userModel')
 //@access Private
 const getRuns = asyncHandler(async (req, res) => {
   const runs = await Run.find({ user: req.user.id })
-  
+
   if (!runs) {
     res.status(400).json({ message: 'No Runs Found for This User' })
     return
@@ -25,17 +25,50 @@ const setRun = asyncHandler(async (req, res) => {
       res.status(400).json({ message: 'Please fill in all fields' })
     }
 
+    if(req.body.runDistance < 0 || req.body.avgHeartRate < 0 || req.body.activeCalories < 0 || req.body.totalCalories < 0){
+      res.status(400).json({message: 'Input cannot be negative'})
+    }
+
+    //Function to make sure runTime and avgPace are in 'HH:MM:SS' format and to store them properly as numbers in database
+    function convertToSeconds(timeStr) {
+      const timeRegex = /^(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)$/
+
+      if(!timeRegex.test(timeStr)){
+        res.status(400).json({message: 'Invalid time format'})
+      }
+            
+      const timeComponents = timeStr.split(':').map(Number)
+
+      const numComponents = timeComponents.length
+
+      let hours = 0
+      let min = 0
+
+      if(numComponents === 2){
+        min = timeComponents[0]
+      } else if(numComponents === 3){
+        hours = timeComponents[0]
+        min = timeComponents[1]
+      }
+
+      const seconds = timeComponents[numComponents - 1]
+      const totalSeconds = (hours * 3600) + (min * 60) + seconds
+      return totalSeconds
+    }
+
+
     const run = await Run.create({
       date: req.body.date,
-      runTime: req.body.runTime,
+      runTime: convertToSeconds(req.body.runTime),
       runDistance: req.body.runDistance,
-      avgPace: req.body.avgPace,
+      avgPace: convertToSeconds(req.body.avgPace),
       avgHeartRate: req.body.avgHeartRate,
       activeCalories: req.body.activeCalories,
       totalCalories: req.body.activeCalories,
       user: req.user.id
     })
     res.status(200).json(run)
+  
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' })
   }
