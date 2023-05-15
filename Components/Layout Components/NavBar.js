@@ -1,4 +1,4 @@
-//TODO: Kinda fixed, but kinda not, and need to get to work like Footer's sheen. Also need 
+//TODO: Kinda fixed, but kinda not, and need to get to work like Footer's sheen. Further styling for each of the options selected
 import NavBarLink from './NavBarLink'
 import styles from '../../styles/Layout Component Styles/NavBar.module.css'
 

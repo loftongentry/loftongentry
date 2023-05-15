@@ -1,3 +1,4 @@
+//Correct styling for fruity shooty container
 import styles from '../../../styles/Page Component Styles/FruityShootyComponent.module.css'
 
 const FruityShooty = () => {
