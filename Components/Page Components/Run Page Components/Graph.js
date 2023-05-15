@@ -1,6 +1,6 @@
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import styles from '@/styles/Graph.module.css'
+import styles from '@/styles/Page Component Styles/Graph.module.css'
 Chart.register(
   CategoryScale,
   LinearScale,
@@ -18,7 +18,7 @@ const Graph = ({ data, graphName, dataPropName }) => {
     dataPropValue = dataPropName.map((propName, index) => ({
       label: graphName[index],
       data: data()?.map(d => d[propName]),
-      backgrounColor: 'lightblue',
+      backgroundColor: 'lightblue',
       borderColor: 'gray',
       borderWidth: 1,
     }))
@@ -26,7 +26,7 @@ const Graph = ({ data, graphName, dataPropName }) => {
     dataPropValue = [{
       label: graphName,
       data: data()?.map(d => d[dataPropName]),
-      backgrounColor: 'lightblue',
+      backgroundColor: 'lightblue',
       borderColor: 'gray',
       borderWidth: 1,
     }]

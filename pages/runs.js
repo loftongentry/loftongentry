@@ -7,7 +7,7 @@ import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
-import Graph from "@/Components/Page Components/Run Page Components/Graphs/Graph"
+import Graph from "@/Components/Page Components/Run Page Components/Graph"
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -28,16 +28,6 @@ const runs = () => {
     logout()
     setLoggedIn(false)
   }
-
-  const chartData = runData?.map(d => ({
-    date: d.date,
-    runTime: d.runTime,
-    runDistance: d.runDistance,
-    avgPace: d.avgPace,
-    avgHeartRate: d.avgHeartRate,
-    activeCalories: d.activeCalories,
-    totalCalories: d.totalCalories,
-  }))
 
   return (
     <>
