@@ -25,18 +25,18 @@ const setRun = asyncHandler(async (req, res) => {
       res.status(400).json({ message: 'Please fill in all fields' })
     }
 
-    if(req.body.runDistance < 0 || req.body.avgHeartRate < 0 || req.body.activeCalories < 0 || req.body.totalCalories < 0){
-      res.status(400).json({message: 'Input cannot be negative'})
+    if (req.body.runDistance < 0 || req.body.avgHeartRate < 0 || req.body.activeCalories < 0 || req.body.totalCalories < 0) {
+      res.status(400).json({ message: 'Input cannot be negative' })
     }
 
     //Function to make sure runTime and avgPace are in 'HH:MM:SS' format and to store them properly as numbers in database
     function convertToSeconds(timeStr) {
       const timeRegex = /^(?:([01]?\d|2[0-3]):)?([0-5]?\d):([0-5]?\d)$/
 
-      if(!timeRegex.test(timeStr)){
-        res.status(400).json({message: 'Invalid time format'})
+      if (!timeRegex.test(timeStr)) {
+        res.status(400).json({ message: 'Invalid time format' })
       }
-            
+
       const timeComponents = timeStr.split(':').map(Number)
 
       const numComponents = timeComponents.length
@@ -44,9 +44,9 @@ const setRun = asyncHandler(async (req, res) => {
       let hours = 0
       let min = 0
 
-      if(numComponents === 2){
+      if (numComponents === 2) {
         min = timeComponents[0]
-      } else if(numComponents === 3){
+      } else if (numComponents === 3) {
         hours = timeComponents[0]
         min = timeComponents[1]
       }
@@ -64,11 +64,11 @@ const setRun = asyncHandler(async (req, res) => {
       avgPace: convertToSeconds(req.body.avgPace),
       avgHeartRate: req.body.avgHeartRate,
       activeCalories: req.body.activeCalories,
-      totalCalories: req.body.activeCalories,
+      totalCalories: req.body.totalCalories,
       user: req.user.id
     })
     res.status(200).json(run)
-  
+
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' })
   }

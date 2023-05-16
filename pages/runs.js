@@ -60,6 +60,7 @@ const runs = () => {
             <Graph
               graphName='Run Time'
               dataPropName='runTime'
+              timeFormatting={true}
               data={() => runData?.map(d => ({
                 date: d.date,
                 runTime: d.runTime,
@@ -76,6 +77,7 @@ const runs = () => {
             <Graph
               graphName='Average Pace'
               dataPropName='avgPace'
+              timeFormatting={true}
               data={() => runData?.map(d => ({
                 date: d.date,
                 avgPace: d.avgPace
