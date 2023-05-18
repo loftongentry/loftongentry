@@ -1,9 +1,31 @@
-.graphWrapper{
+.graphWrapper {
   background-color: lightgray;
   border-radius: 10px;
-  min-width: 700px;
-  max-width: 700px;
+  min-width: 500px;
+  max-width: 500px;
+  max-height: 250px;
   margin-top: 20px;
   padding: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media(max-width: 428px) {
+  .graphWrapper {
+    max-width: 350px;
+    min-width: 350px;
+  }
+}
+
+@media(max-width: 375px) {
+  .graphWrapper {
+    max-width: 300px;
+    min-width: 300px;
+  }
+}
+
+@media(max-width: 320px) {
+  .graphWrapper {
+    max-width: 280px;
+    min-width: 280px;
+  }
 }

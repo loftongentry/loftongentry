@@ -57,40 +57,45 @@ const runs = () => {
       <div className={styles.graphContainer}>
         {runData.length > 0 &&
           <div>
-            <Graph
-              graphName='Run Time'
-              dataPropName='runTime'
-              timeFormatting={true}
-              data={() => runData?.map(d => ({
-                date: d.date,
-                runTime: d.runTime,
-              }))}
-            />
-            <Graph
-              graphName='Run Distance'
-              dataPropName='runDistance'
-              data={() => runData?.map(d => ({
-                date: d.date,
-                runDistance: d.runDistance
-              }))}
-            />
-            <Graph
-              graphName='Average Pace'
-              dataPropName='avgPace'
-              timeFormatting={true}
-              data={() => runData?.map(d => ({
-                date: d.date,
-                avgPace: d.avgPace
-              }))}
-            />
-            <Graph
-              graphName='Average Heart Rate'
-              dataPropName='avgHeartRate'
-              data={() => runData?.map(d => ({
-                date: d.date,
-                avgHeartRate: d.avgHeartRate
-              }))}
-            />
+            <div className={styles.graphRow}>
+              <Graph
+                graphName='Run Time'
+                dataPropName='runTime'
+                timeFormatting={true}
+                data={() => runData?.map(d => ({
+                  date: d.date,
+                  runTime: d.runTime,
+                }))}
+              />
+              <Graph
+                graphName='Run Distance'
+                dataPropName='runDistance'
+                data={() => runData?.map(d => ({
+                  date: d.date,
+                  runDistance: d.runDistance
+                }))}
+              />
+            </div>
+            <div className={styles.graphRow}>
+              <Graph
+                graphName='Average Pace'
+                dataPropName='avgPace'
+                timeFormatting={true}
+                data={() => runData?.map(d => ({
+                  date: d.date,
+                  avgPace: d.avgPace
+                }))}
+              />
+              <Graph
+                graphName='Average Heart Rate'
+                dataPropName='avgHeartRate'
+                data={() => runData?.map(d => ({
+                  date: d.date,
+                  avgHeartRate: d.avgHeartRate
+                }))}
+              />
+            </div>
+            <div className={styles.graphRow}>
             <Graph
               graphName={['Active Calories', 'Total Calories']}
               dataPropName={['activeCalories', 'totalCalories']}
@@ -100,6 +105,7 @@ const runs = () => {
                 totalCalories: d.totalCalories,
               }))}
             />
+            </div>
           </div>
         }
       </div>
