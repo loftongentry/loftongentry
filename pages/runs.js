@@ -9,6 +9,7 @@ import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import Graph from "@/Components/Page Components/Run Page Components/Graph"
+import TotalsBox from "@/Components/Page Components/Run Page Components/TotalsBox"
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -29,6 +30,8 @@ const runs = () => {
     logout()
     setLoggedIn(false)
   }
+
+  console.log(runData)
 
   return (
     <>
@@ -55,14 +58,14 @@ const runs = () => {
       {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
       {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
       <div className={styles.graphContainer}>
-        {runData.length > 0 &&
+        {runData.runs &&
           <div>
             <div className={styles.graphRow}>
               <Graph
                 graphName='Run Time'
                 dataPropName='runTime'
                 timeFormatting={true}
-                data={() => runData?.map(d => ({
+                data={() => runData.runs?.map(d => ({
                   date: d.date,
                   runTime: d.runTime,
                 }))}
@@ -70,7 +73,7 @@ const runs = () => {
               <Graph
                 graphName='Run Distance'
                 dataPropName='runDistance'
-                data={() => runData?.map(d => ({
+                data={() => runData.runs?.map(d => ({
                   date: d.date,
                   runDistance: d.runDistance
                 }))}
@@ -81,7 +84,7 @@ const runs = () => {
                 graphName='Average Pace'
                 dataPropName='avgPace'
                 timeFormatting={true}
-                data={() => runData?.map(d => ({
+                data={() => runData.runs?.map(d => ({
                   date: d.date,
                   avgPace: d.avgPace
                 }))}
@@ -89,26 +92,27 @@ const runs = () => {
               <Graph
                 graphName='Average Heart Rate'
                 dataPropName='avgHeartRate'
-                data={() => runData?.map(d => ({
+                data={() => runData.runs?.map(d => ({
                   date: d.date,
                   avgHeartRate: d.avgHeartRate
                 }))}
               />
             </div>
             <div className={styles.graphRow}>
-            <Graph
-              graphName={['Active Calories', 'Total Calories']}
-              dataPropName={['activeCalories', 'totalCalories']}
-              data={() => runData?.map(d => ({
-                date: d.date,
-                activeCalories: d.activeCalories,
-                totalCalories: d.totalCalories,
-              }))}
-            />
+              <Graph
+                graphName={['Active Calories', 'Total Calories']}
+                dataPropName={['activeCalories', 'totalCalories']}
+                data={() => runData.runs?.map(d => ({
+                  date: d.date,
+                  activeCalories: d.activeCalories,
+                  totalCalories: d.totalCalories,
+                }))}
+              />
             </div>
           </div>
         }
       </div>
+      <TotalsBox data={runData.cumulativeTotals} />
     </>
   )
 }

@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler')
+const mongoose = require('mongoose')
 const Run = require('../models/runModel')
 const User = require('../models/userModel')
 
@@ -8,12 +9,37 @@ const User = require('../models/userModel')
 const getRuns = asyncHandler(async (req, res) => {
   const runs = await Run.find({ user: req.user.id })
 
+  const cumulativeTotals = await Run.aggregate([
+    //{ $match: { user: req.user.id } },
+    {
+      $group: {
+        _id: null,
+        totalRunTime: { $sum: '$runTime' },
+        avgRunTime: { $avg: '$runTime' },
+        totalRunDistance: { $sum: '$runDistance' },
+        avgRunDistance: { $avg: '$runDistance' },
+        avgPace: { $avg: '$avgPace' },
+        absoluteHeartRate: { $avg: '$avgHeartRate' },
+        totalActiveCalories: { $sum: '$activeCalories' },
+        averageActiveCalories: { $avg: '$activeCalories' },
+        absoluteTotalCalories: { $sum: '$totalCalories' },
+        avgTotalCalories: { $avg: '$totalCalories' },
+      }
+    }
+  ])
+
+
   if (!runs) {
     res.status(400).json({ message: 'No Runs Found for This User' })
     return
   }
 
-  res.status(200).json(runs)
+  const response = {
+    runs,
+    cumulativeTotals
+  }
+
+  res.status(200).json(response)
 })
 
 //@desc   Set Run
