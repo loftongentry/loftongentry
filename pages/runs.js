@@ -112,7 +112,7 @@ const runs = () => {
           </div>
         }
       </div>
-      <TotalsBox data={runData.cumulativeTotals} />
+      {runData.cumulativeTotals && <TotalsBox data={runData.cumulativeTotals} />}
     </>
   )
 }
