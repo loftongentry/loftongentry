@@ -71,7 +71,7 @@ const runs = () => {
                 }))}
               />
               <Graph
-                graphName='Run Distance'
+                graphName='Run Distance (Miles)'
                 dataPropName='runDistance'
                 data={() => runData.runs?.map(d => ({
                   date: d.date,
@@ -90,7 +90,7 @@ const runs = () => {
                 }))}
               />
               <Graph
-                graphName='Average Heart Rate'
+                graphName='Average Heart Rate (BPM)'
                 dataPropName='avgHeartRate'
                 data={() => runData.runs?.map(d => ({
                   date: d.date,

@@ -37,7 +37,7 @@ const Graph = ({ data, graphName, dataPropName, timeFormatting }) => {
       })),
       backgroundColor: 'lightblue',
       borderColor: 'gray',
-      borderWidth: 1,
+      borderWidth: 2,
     }]
   }
 
@@ -57,7 +57,16 @@ const Graph = ({ data, graphName, dataPropName, timeFormatting }) => {
 
             return `${datasetLabel}: ${formattedValue}`
           }
-        }
+        },
+      },
+      legend: {
+        labels: {
+          color: 'white',
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
+        },
       },
     },
     scales: {
@@ -65,13 +74,31 @@ const Graph = ({ data, graphName, dataPropName, timeFormatting }) => {
         title: {
           display: true,
           text: 'Date',
+          color: 'white',
+          font: {
+            size: 16,
+            weight: 'bold',
+          },
+        },
+        ticks: {
+          color: 'white'
+        },
+        grid: {
+          color: 'white',
         },
       },
       y: {
         ticks: {
+          color: 'white',
           callback: (value) => timeFormatting ? convertToTimeFormat(value) : value,
-        }
-      }
+          font: {
+            color: 'white'
+          }
+        },
+        grid: {
+          color: 'white',
+        },
+      },
     },
   }
 
