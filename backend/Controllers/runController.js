@@ -10,7 +10,7 @@ const getRuns = asyncHandler(async (req, res) => {
   const runs = await Run.find({ user: req.user.id })
 
   const cumulativeTotals = await Run.aggregate([
-    //{ $match: { user: req.user.id } },
+    { $match: { user: new mongoose.Types.ObjectId(req.user.id) } },
     {
       $group: {
         _id: null,
