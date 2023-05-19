@@ -3,24 +3,24 @@ import { convertToTimeFormat } from '@/config/convertToTimeFormat'
 
 const TotalsBox = ({ data }) => {
   console.log(data)
-  
+
   return (
     <div className={styles.boxContainer}>
-      <div>
-        <h4>Totals</h4>
-        <p>Total Time Ran: {convertToTimeFormat(`${data[0].totalRunTime}`)}</p>
-        <p>Total Distance Run: {`${data[0].totalRunTime}`}</p>
-        <p>Total Active Calories Burned: {`${data[0].totalActiveCalories}`}</p>
-        <p>Total Calories Burned: {`${data[0].absoluteTotalCalories}`}</p>
+      <div className={styles.boxWrapper}>
+        <p className={styles.boxHeader}>Totals</p>
+        <p>Total Time Ran: <strong>{convertToTimeFormat(`${data[0].totalRunTime}`)}</strong></p>
+        <p>Total Distance Run: <strong>{`${data[0].totalRunTime}`}</strong></p>
+        <p>Total Active Calories Burned: <strong>{`${data[0].totalActiveCalories}`}</strong></p>
+        <p>Total Calories Burned: <strong>{`${data[0].absoluteTotalCalories}`}</strong></p>
       </div>
-      <div>
-        <h4>Average Per Run</h4>
-        <p>Average Run Time: {convertToTimeFormat(`${data[0].avgRunTime}`)}</p>
-        <p>Average Run Distance: {`${data[0].avgRunDistance}`}</p>
-        <p>Average Pace: {convertToTimeFormat(`${data[0].avgPace}`)}</p>
-        <p>Average Heart Rate: {`${data[0].absoluteHeartRate}`}</p>
-        <p>Average Active Calories: {`${data[0].averageActiveCalories}`}</p>
-        <p>Average Total Calories: {`${data[0].avgTotalCalories}`}</p>
+      <div className={styles.boxWrapper}>
+        <p className={styles.boxHeader}>Average Per Run</p>
+        <p>Average Run Time: <strong>{convertToTimeFormat(`${data[0].avgRunTime}`)}</strong></p>
+        <p>Average Run Distance: <strong>{`${data[0].avgRunDistance}`}</strong></p>
+        <p>Average Pace: <strong>{convertToTimeFormat(`${data[0].avgPace}`)}</strong></p>
+        <p>Average Heart Rate: <strong>{`${data[0].absoluteHeartRate}`}</strong></p>
+        <p>Average Active Calories: <strong>{`${data[0].averageActiveCalories}`}</strong></p>
+        <p>Average Total Calories: <strong>{`${data[0].avgTotalCalories}`}</strong></p>
       </div>
     </div>
   )
