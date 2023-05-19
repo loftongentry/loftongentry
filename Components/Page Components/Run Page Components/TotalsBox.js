@@ -18,8 +18,8 @@ const TotalsBox = ({ data }) => {
         <p>Average Run Time: <strong>{convertToTimeFormat(`${data[0].avgRunTime}`)}</strong></p>
         <p>Average Run Distance: <strong>{`${data[0].avgRunDistance}`}</strong></p>
         <p>Average Pace: <strong>{convertToTimeFormat(`${data[0].avgPace}`)}</strong></p>
-        <p>Average Heart Rate: <strong>{`${data[0].absoluteHeartRate}`}</strong></p>
-        <p>Average Active Calories: <strong>{`${data[0].averageActiveCalories}`}</strong></p>
+        <p>Average Heart Rate: <strong>{`${data[0].absoluteAvgHeartRate}`}</strong></p>
+        <p>Average Active Calories: <strong>{`${data[0].avgActiveCalories}`}</strong></p>
         <p>Average Total Calories: <strong>{`${data[0].avgTotalCalories}`}</strong></p>
       </div>
     </div>

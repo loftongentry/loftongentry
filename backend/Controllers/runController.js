@@ -19,11 +19,25 @@ const getRuns = asyncHandler(async (req, res) => {
         totalRunDistance: { $sum: '$runDistance' },
         avgRunDistance: { $avg: '$runDistance' },
         avgPace: { $avg: '$avgPace' },
-        absoluteHeartRate: { $avg: '$avgHeartRate' },
+        absoluteAvgHeartRate: { $avg: '$avgHeartRate' },
         totalActiveCalories: { $sum: '$activeCalories' },
-        averageActiveCalories: { $avg: '$activeCalories' },
+        avgActiveCalories: { $avg: '$activeCalories' },
         absoluteTotalCalories: { $sum: '$totalCalories' },
         avgTotalCalories: { $avg: '$totalCalories' },
+      }
+    }, {
+      $project: {
+        _id: null,
+        totalRunTime: 1,
+        avgRunTime: 1,
+        totalRunDistance: 1,
+        avgRunDistance: { $round: ['$avgRunDistance', 2] },
+        avgPace: 1,
+        absoluteAvgHeartRate: { $round: '$absoluteAvgHeartRate' },
+        totalActiveCalories: 1,
+        avgActiveCalories: { $round: ['$avgActiveCalories', 2] },
+        absoluteTotalCalories: 1,
+        avgTotalCalories: { $round: ['$avgTotalCalories', 2] },
       }
     }
   ])
