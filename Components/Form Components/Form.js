@@ -7,14 +7,10 @@ import Select from './Select'
 import TextArea from './TextArea'
 
 const Form = ({ modalLabel, types, keys, labels, asyncFunc, specialComponents, closeModal }) => {
-  const initValues = {}
+  const initState = {
+    values: keys.reduce((acc, key) => ({ ...acc, [key]: '' }), {})
+  }
 
-  types.forEach(type => {
-    initValues[type] = ''
-  })
-  
-  const initState = { values: initValues }
-  
   const [formState, setFormState] = useState(initState)
   const [fadeOut, setFadeOut] = useState(false)
   const { values, isLoading, error } = formState
@@ -70,37 +66,37 @@ const Form = ({ modalLabel, types, keys, labels, asyncFunc, specialComponents, c
           <div className={styles.modalBody}>
             {
               keys.map((key, index) => (
-                <Input 
+                <Input
                   key={key}
                   type={types[index]}
                   id={key}
                   name={key}
                   label={labels[index]}
-                  value={values[key] || ''}
+                  value={values[key]}
                   onChange={handleInputChange}
                 />
               ))}
-              {specialComponents && specialComponents.map((component, index) => (
-                <div key={`special-${index}`}>
-                  {component.type === 'select' && (
-                    <Select
-                      name={component.name}
-                      label={component.label}
-                      value={values[component.name] || ''}
-                      onChange={handleInputChange}
-                      options={component.options}
-                    />
-                  )}
-                  {component.type === 'textarea' && (
-                    <TextArea
-                      name={component.name}
-                      label={component.label}
-                      value={values[component.name] || ''}
-                      onChange={handleInputChange} 
-                    />
-                  )}
-                </div>
-              ))}
+            {specialComponents && specialComponents.map((component, index) => (
+              <div key={`special-${index}`}>
+                {component.type === 'select' && (
+                  <Select
+                    name={component.name}
+                    label={component.label}
+                    value={values[component.name] || ''}
+                    onChange={handleInputChange}
+                    options={component.options}
+                  />
+                )}
+                {component.type === 'textarea' && (
+                  <TextArea
+                    name={component.name}
+                    label={component.label}
+                    value={values[component.name] || ''}
+                    onChange={handleInputChange}
+                  />
+                )}
+              </div>
+            ))}
           </div>
           <div className={styles.modalFooter}>
             {!isLoading ?

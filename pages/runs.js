@@ -76,7 +76,7 @@ const runs = () => {
         <Form
           modalLabel='Register New Run'
           types={['date', 'text', 'number', 'text', 'number', 'number', 'number']}
-          keys={['date', 'runTime', 'runDistance', 'avgPace', 'avgHeartRate', 'activeCalories', 'totalCalroies']}
+          keys={['date', 'runTime', 'runDistance', 'avgPace', 'avgHeartRate', 'activeCalories', 'totalCalories']}
           labels={['Run Date', 'Run Time', 'Run Distance', 'Average Pace', 'Average Heart Rate', 'Active Calories Burned', 'Total Calories Burned']}
           asyncFunc={createRun}
           closeModal={() => setModalRunForm(prev => !prev)}
