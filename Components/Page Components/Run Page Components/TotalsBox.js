@@ -2,8 +2,10 @@ import styles from '@/styles/Page Component Styles/Run Page Styles/TotalsBox.mod
 import { convertToTimeFormat } from '@/config/convertToTimeFormat'
 
 const TotalsBox = ({ data }) => {
-  console.log(data)
-
+  if(!data || data.length === 0){
+    return null
+  }
+  
   return (
     <div className={styles.boxContainer}>
       <div className={styles.boxWrapper}>
