@@ -2,9 +2,8 @@ import { useState } from 'react'
 import Input from '../../Form Components/Input'
 import Select from '../../Form Components/Select'
 import TextArea from '../../Form Components/TextArea'
-import { sendContactForm } from '@/library/sendContactForm'
 import GlassLoader from '../../Global Components/GlassLoader'
-import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
+//import styles from '../../../styles/Page Component Styles/Index Styles/GlassModalForm.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
 const initValues = {

@@ -1,15 +1,15 @@
-//TODO: Adding a item that shows the overall average pace, and the total distance ran (per month, year, etc. Another graph possibly?)
 import { useEffect, useState } from "react"
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
-import LoginForm from "@/Components/Page Components/Run Page Components/LoginForm"
-import RegisterForm from '@/Components/Page Components/Run Page Components/RegisterForm'
-import RunDataForm from "@/Components/Page Components/Run Page Components/RunDataForm"
+import Form from "@/Components/Form Components/Form"
 import { logout } from "./api/authenticationAPI"
 import { getRuns } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import Graph from "@/Components/Page Components/Run Page Components/Graph"
 import TotalsBox from "@/Components/Page Components/Run Page Components/TotalsBox"
+import { login, register } from '@/pages/api/authenticationAPI'
+import { createRun } from '@/pages/api/runAPI'
+
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -30,8 +30,6 @@ const runs = () => {
     logout()
     setLoggedIn(false)
   }
-
-  console.log(runData)
 
   return (
     <>
@@ -54,9 +52,36 @@ const runs = () => {
             </button>
           </div>)}
       </header>
-      {modalLoginOpen && (<LoginForm closeModal={() => setModalLoginOpen(prev => !prev)} />)}
-      {modalRegisterOpen && (<RegisterForm closeModal={() => setModalRegisterOpen(prev => !prev)} />)}
-      {modalRunForm && (<RunDataForm closeModal={() => setModalRunForm(prev => !prev)} />)}
+      {modalLoginOpen && (
+        <Form
+          modalLabel='Login Here'
+          types={['email', 'password']}
+          keys={['email', 'password']}
+          labels={['User Email', 'User Password']}
+          asyncFunc={login}
+          closeModal={() => setModalLoginOpen(prev => !prev)}
+        />
+      )}
+      {modalRegisterOpen && (
+        <Form
+          modalLabel='Register Here'
+          types={['text', 'email', 'password', 'password']}
+          keys={['name', 'email', 'password', 'confirmPassword']}
+          labels={['Your Name', 'Your Email', 'Your Password', 'Confirm Password']}
+          asyncFunc={register}
+          closeModal={() => setModalRegisterOpen(prev => !prev)}
+        />
+      )}
+      {modalRunForm && (
+        <Form
+          modalLabel='Register New Run'
+          types={['date', 'text', 'number', 'text', 'number', 'number', 'number']}
+          keys={['date', 'runTime', 'runDistance', 'avgPace', 'avgHeartRate', 'activeCalories', 'totalCalroies']}
+          labels={['Run Date', 'Run Time', 'Run Distance', 'Average Pace', 'Average Heart Rate', 'Active Calories Burned', 'Total Calories Burned']}
+          asyncFunc={createRun}
+          closeModal={() => setModalRunForm(prev => !prev)}
+        />
+      )}
       <div className={styles.graphContainer}>
         {runData.runs &&
           <div>

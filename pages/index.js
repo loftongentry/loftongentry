@@ -2,22 +2,19 @@ import { useState } from 'react'
 import GlassCard from '@/Components/Page Components/Index Components/GlassCard'
 import Divider from '@/Components/Global Components/Divider'
 import SkillCard from '@/Components/Page Components/Index Components/SkillCard'
-import GlassModalForm from '@/Components/Page Components/Index Components/ContactForm'
+import Form from '@/Components/Form Components/Form'
 import { DiReact, DiCss3, DiJavascript, DiPython, DiJava } from 'react-icons/di'
 import { AiFillHtml5, AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGit } from 'react-icons/bs'
 import { SiPlanetscale, SiChakraui } from 'react-icons/si'
+import { sendContactForm } from '@/library/sendContactForm'
 import styles from '@/styles/Page Styles/Index.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false)
 
-  const handleClick = () => {
-    setModalOpen(prev => !prev)
-  }
-  
   return (
     <div className={styles.content}>
       <h1 className={styles.header}>Welcome!</h1>
@@ -89,8 +86,30 @@ export default function Home() {
         />
       </div>
       <Divider />
-      <button className={buttonStyles.button} onClick={handleClick}>Contact Me Here</button>
-      {modalOpen && (<GlassModalForm closeModal={handleClick}/>)}
+      <button className={buttonStyles.button} onClick={() => setModalOpen(true)}>Contact Me Here</button>
+      {modalOpen && (
+        <Form
+          modalLabel='Contact Me'
+          types={['text', 'text', 'email', 'tel']}
+          keys={['firstName', 'lastName', 'email', 'phoneNumber']}
+          labels={['First Name', 'Last Name', 'Email', 'Phone Number']}
+          asyncFunc={sendContactForm}
+          specialComponents={[
+            {
+              type: 'select',
+              name: 'contactReason',
+              label: 'Reason For Contacting',
+              options: ['Job Opportunity', 'Design a Website', 'Other']
+            },
+            {
+              type: 'textarea',
+              name: 'additionalDetails',
+              label: 'Additional Details (Optional)'
+            }
+          ]}
+          closeModal={() => setModalOpen(prev => !prev)}
+        />
+      )}
     </div>
   )
 }
