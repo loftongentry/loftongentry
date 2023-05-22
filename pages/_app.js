@@ -4,6 +4,7 @@ import Layout from '@/Components/Layout'
 import { Poppins } from 'next/font/google'
 import AppWrapper from '@/Components/AppWrapper'
 import '@/styles/globals.css'
+import PreLoader from '@/Components/PreLoader/PreLoader'
 
 const poppins = Poppins({
   subsets: ['latin'],

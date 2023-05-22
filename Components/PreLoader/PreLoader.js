@@ -1,11 +1,9 @@
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useLayoutEffect, useRef } from "react"
 import { preLoaderAnim } from "./Loader"
 import { gsap } from "gsap"
-import "../../styles/PreLoader.module.css"
+import { preLoaderStyle, imageContainerStyle, runningBoiStyle, textContainerStyle, textWrapperStyle, spanColumnStyle, spanStyle } from "./PreLoaderStyles"
 
 const PreLoader = () => {
-  const tl = useRef(null)
-
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       preLoaderAnim()
@@ -14,15 +12,23 @@ const PreLoader = () => {
   }, [])
 
   return (
-    <div className="preLoader">
-      <div className="image-container">
-        <img className="runningBoi" src='/Images/runningBoi.jpg' alt='runningBoi' height='200' />
+    <div className="pre-loader" style={preLoaderStyle}>
+      <div className="image-container" style={imageContainerStyle}>
+        <img className="running-boi" src='/Images/runningBoi.jpg' alt='runningBoi' style={runningBoiStyle} />
       </div>
-      {/* <div className="text-container">
-        <span>Innovator </span>
-        <span>Creator </span>
-        <span>Runner</span>
-      </div> */}
+      <div className="text-wrapper" style={textWrapperStyle}>
+        <div className="text-container" style={textContainerStyle}>
+          <div className='span-col' style={spanColumnStyle}>
+            <span style={spanStyle}>Runner</span>
+          </div>
+          <div className="span-col" style={spanColumnStyle}>
+            <span style={spanStyle}>Inovator</span>
+          </div>
+          <div className="span-col" style={spanColumnStyle}>
+            <span style={spanStyle}>Creator</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
