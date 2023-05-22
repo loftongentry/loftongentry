@@ -36,7 +36,8 @@ export const spanColumnStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  background: 'rgba(255, 255, 255, 0.05)'
+  background: 'rgba(255, 255, 255, 0.05)',
+  backdropFilter: 'blur(10px)'
 }
 
 export const spanStyle = {
