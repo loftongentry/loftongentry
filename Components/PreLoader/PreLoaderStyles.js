@@ -6,21 +6,6 @@ export const preLoaderStyle = {
   alignItems: 'center'
 }
 
-export const imageContainerStyle = {
-  position: 'absolute',
-  width: '100vw',
-  height: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  zIndex: '1000'
-}
-
-export const runningBoiStyle = {
-  height: '200px',
-  borderRadius: '10px'
-}
-
 export const textContainerStyle = {
   position: 'absolute',
   display: 'flex',
