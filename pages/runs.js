@@ -10,7 +10,6 @@ import TotalsBox from "@/Components/Page Components/Run Page Components/TotalsBo
 import { login, register } from '@/pages/api/authenticationAPI'
 import { createRun } from '@/pages/api/runAPI'
 
-
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
   const [modalRegisterOpen, setModalRegisterOpen] = useState(false)

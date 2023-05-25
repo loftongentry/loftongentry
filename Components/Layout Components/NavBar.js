@@ -2,7 +2,6 @@
 import NavBarLink from './NavBarLink'
 import styles from '../../styles/Layout Component Styles/NavBar.module.css'
 
-
 const NavBar = () => {
   return (
     <nav className={styles.FirstNav}>

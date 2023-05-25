@@ -1,10 +1,11 @@
-import { useLayoutEffect, useRef } from "react"
+//TODO: Remove artifact
+import { useEffect } from "react"
 import { preLoaderAnim } from "./Loader"
 import { gsap } from "gsap"
 import { preLoaderStyle, textContainerStyle, textWrapperStyle, spanColumnStyle, spanStyle } from "./PreLoaderStyles"
 
 const PreLoader = () => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       preLoaderAnim()
     })

@@ -22,16 +22,12 @@ export const preLoaderAnim = () => {
     })
     .to('.text-wrapper', {
       y: '100%',
-      duration: 0.6,
+      duration: 0.5,
       ease: 'power3.inOut',
-      delay: -0.5
     })
     .to('.pre-loader', {
-      scaleY: 0,
-      transformOrigin: 'top',
-      duration: 0.6,
-      ease: 'power3.inOut',
-      delay: -0.3
+      opacity: 0,
+      transformOrigin: 'bottom',
+      duration: 0,
     });
-
 }
