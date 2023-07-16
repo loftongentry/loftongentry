@@ -15,23 +15,8 @@
   position: relative;
 }
 
-.card:before {
-  content: '';
-  position: absolute;
-  width: 20%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.5);
-  filter: blur(0px);
-  transition: 400ms;
-  transform: skewX(45deg) translateX(calc(var(--width) + 180%));
-}
-
 .card:hover {
   transform: translateY(10px);
-}
-
-.card:hover:before {
-  transform: skewX(45deg) translateX(calc(var(--width) * -1 - 200%));
 }
 
 .card {
