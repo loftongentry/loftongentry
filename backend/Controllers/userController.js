@@ -15,12 +15,16 @@ const registerUser = asyncHandler(async (req, res) => {
       return res.status(400).json({ message: 'Please add all fields' })
     }
 
+    if(email != process.env.NEXT_PUBLIC_EMAIL){
+      return res.status(400).json({message: 'Apologies, No New Users'})
+    }
+
     //Check to make sure that the password and the confirmPassword are equal
     if (password != confirmPassword) {
       return res.status(400).json({ message: 'Passwords Do Not Match' })
     }
 
-    //Tests the email submitted to make sure it's an acutal email using a RegEx
+    //Tests the email submitted to make sure it's an actual email using a RegEx
     if (!emailRegex.test(email)) {
       return res.status(400).json({ message: 'Please Enter a Valid Email' })
     }
@@ -54,6 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
       return res.status(400).json({ message: 'Invalid User Data' })
     }
   } catch (error) {
+    console.error('An error has occurred: ', error)
     res.status(500).json({ message: 'Internal Server Error' })
   }
 })
