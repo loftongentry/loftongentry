@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa"
 import Form from "@/Components/Form Components/Form"
-import { logout } from "./api/authenticationAPI"
-import { getRuns } from "./api/runAPI"
+import { logout, login, register } from "./api/authenticationAPI"
+import { getRuns, createRun } from "./api/runAPI"
 import styles from '@/styles/Page Styles/Runs.module.css'
 import buttonStyles from '@/styles/Global Component Styles/Button.module.css'
 import Graph from "@/Components/Page Components/Run Page Components/Graph"
 import TotalsBox from "@/Components/Page Components/Run Page Components/TotalsBox"
-import { login, register } from '@/pages/api/authenticationAPI'
-import { createRun } from '@/pages/api/runAPI'
 
 const runs = () => {
   const [modalLoginOpen, setModalLoginOpen] = useState(false)
@@ -25,18 +23,25 @@ const runs = () => {
     }
   }, [])
 
+  const handleLogin = () =>{
+    setLoggedIn(true)
+    window.location.reload()
+  }
+
   const handleLogout = () => {
     logout()
     setLoggedIn(false)
+    window.location.reload()
   }
 
   return (
     <>
       <header className={styles.header}>
         {!loggedIn ?
-          (<div><button className={buttonStyles.button} onClick={() => setModalLoginOpen(prev => !prev)}>
-            <FaSignInAlt /> Login
-          </button>
+          (<div>
+            <button className={buttonStyles.button} onClick={() => setModalLoginOpen(prev => !prev)}>
+              <FaSignInAlt /> Login
+            </button>
             <button className={buttonStyles.button} onClick={() => setModalRegisterOpen(prev => !prev)}>
               <FaUser /> Register
             </button>
@@ -58,7 +63,10 @@ const runs = () => {
           keys={['email', 'password']}
           labels={['User Email', 'User Password']}
           asyncFunc={login}
-          closeModal={() => setModalLoginOpen(prev => !prev)}
+          closeModal={() => {
+            handleLogin();
+            setModalLoginOpen(prev => !prev);
+          }}
         />
       )}
       {modalRegisterOpen && (
