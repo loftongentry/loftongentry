@@ -28,5 +28,5 @@ export const spanColumnStyle = {
 export const spanStyle = {
   color: 'white',
   fontWeight: '700',
-  fontSize: '30px'
+  fontSize: '26px',
 }

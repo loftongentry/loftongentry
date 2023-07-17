@@ -49,7 +49,7 @@ const PreLoader = () => {
           transformOrigin: 'bottom',
           duration: 0,
           onComplete: enableScrolling
-        });
+        })
     })
 
     return () => {
