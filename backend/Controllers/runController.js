@@ -146,6 +146,7 @@ const updateRun = asyncHandler(async (req, res) => {
 //@desc   Delete Run
 //@route  DELETE /api/runsData/:id
 //@access Private
+//This function does not work but is good as reference
 const deleteRun = asyncHandler(async (req, res) => {
   const run = await Run.findById(req.params.id)
 

@@ -37,6 +37,7 @@ export const getRuns = async () => {
   }
 }
 
+//This function does not do anything in the UI, but is good for reference
 export const deleteRun = async (runID) => {
   try {
     const config = {
