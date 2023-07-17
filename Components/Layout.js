@@ -1,7 +1,7 @@
 import NavBar from "./Layout Components/NavBar"
 import Footer from '@/Components/Layout Components/Footer'
 import styles from '../styles/Layout Component Styles/Layout.module.css'
-import PreLoader from "./PreLoader/PreLoader"
+//import PreLoader from "./PreLoader/PreLoader"
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 
@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     let ctx = gsap.context(() => {
       tl.from('.animation-element', {
-      duration: 7,
+      duration: .75,
     })
       .fromTo(navBarRef.current,
         { opacity: 0 },
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className={styles.layout}>
-      <PreLoader className='animation-element' />
+      {/* <PreLoader className='animation-element' /> */}
       <div ref={navBarRef}>
         <NavBar />
       </div>
