@@ -14,7 +14,6 @@ const Footer = () => {
           <FaLinkedinIn className={styles.linkedIn} />
         </Link>
       </div>
-      <p className={styles.bottomContent}>This website was developed by Lofton and is receiving regular updates</p>
     </footer>
   )
 }
