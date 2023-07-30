@@ -1,3 +1,4 @@
+//This was removed from the final build, but I'm keeping it here for reference
 import { useEffect } from "react"
 import { gsap } from "gsap"
 import { preLoaderStyle, textContainerStyle, textWrapperStyle, spanColumnStyle, spanStyle } from "./PreLoaderStyles"
